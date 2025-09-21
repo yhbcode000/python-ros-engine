@@ -27,19 +27,9 @@ def serve_docs():
         print(f"Error serving documentation: {e}")
         sys.exit(1)
 
-def deploy_docs():
-    """Deploy the documentation site to GitHub Pages."""
-    print("Deploying documentation to GitHub Pages...")
-    try:
-        subprocess.run(["mkdocs", "gh-deploy"], check=True)
-        print("Documentation deployed successfully!")
-    except subprocess.CalledProcessError as e:
-        print(f"Error deploying documentation: {e}")
-        sys.exit(1)
-
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        print("Usage: python build_docs.py [build|serve|deploy]")
+        print("Usage: python build_docs.py [build|serve]")
         sys.exit(1)
     
     command = sys.argv[1]
@@ -48,8 +38,6 @@ if __name__ == "__main__":
         build_docs()
     elif command == "serve":
         serve_docs()
-    elif command == "deploy":
-        deploy_docs()
     else:
-        print("Invalid command. Use 'build', 'serve', or 'deploy'")
+        print("Invalid command. Use 'build' or 'serve'")
         sys.exit(1)

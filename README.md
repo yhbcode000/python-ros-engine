@@ -221,13 +221,19 @@ Comprehensive documentation is available in the `docs/` directory and can be bui
 To build the documentation site locally, first install the development dependencies:
 
 ```bash
+pip install mkdocs mkdocs-material
+```
+
+Or if you have the package installed in development mode:
+
+```bash
 pip install -e .[dev]
 ```
 
 Then build the site:
 
 ```bash
-python build_docs.py build
+mkdocs build
 ```
 
 The static site will be generated in the `site/` directory.
@@ -237,14 +243,23 @@ The static site will be generated in the `site/` directory.
 To serve the documentation site locally for development:
 
 ```bash
-python build_docs.py serve
+mkdocs serve
 ```
 
-This will start a local development server that automatically reloads when you make changes to the documentation files.
+This will start a local development server at http://127.0.0.1:8000 that automatically reloads when you make changes to the documentation files.
 
 ### Online Documentation
 
 For the online documentation, visit [https://your-username.github.io/python-ros-engine/](https://your-username.github.io/python-ros-engine/) (replace `your-username` with the actual GitHub username).
+
+### GitHub Actions Documentation Deployment
+
+The documentation is automatically built and deployed to GitHub Pages using GitHub Actions:
+
+- On pushes to the main branch
+- When a new release is published
+
+No manual deployment steps are required.
 
 ## Bridging with Native ROS
 
