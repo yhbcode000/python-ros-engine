@@ -48,6 +48,8 @@ To get started with the Python ROS Engine, check out our [Installation Guide](in
 
 See our [Examples](examples.md) page for complete working examples demonstrating various features of the Python ROS Engine.
 
+We've also included a [Complete Example Project](examples.md#complete-example-project) that shows how to build a robot system with multiple interconnected nodes using best practices.
+
 ## Contributing
 
 We welcome contributions! Please see our [Contributing Guide](contributing.md) for details on how to contribute to this project.

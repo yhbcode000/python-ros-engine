@@ -1,19 +1,18 @@
 [build-system]
-requires = ["setuptools>=45", "wheel", "setuptools_scm[toml]>=6.2"]
+requires = ["setuptools>=45", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "python-ros-engine"
 description = "A pure Python implementation of ROS2 functionality with bridging capabilities"
 readme = "README.md"
-license = {text = "Apache License 2.0"}
+license = "Apache-2.0"
 authors = [
     {name = "Python ROS Engine Team", email = "pyros@example.com"},
 ]
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
-    "License :: OSI Approved :: Apache Software License",
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.8",
@@ -28,10 +27,7 @@ requires-python = ">=3.8"
 dependencies = [
     "hydra-core>=1.0.0",
 ]
-dynamic = ["version"]
-
-[tool.setuptools]
-license-files = ["LICENSE"]
+version = "0.1.0"
 
 [project.optional-dependencies]
 test = [
@@ -53,8 +49,6 @@ dev = [
 Homepage = "https://github.com/your-username/python-ros-engine"
 Repository = "https://github.com/your-username/python-ros-engine"
 
-[tool.setuptools_scm]
-write_to = "src/pyros2/_version.py"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

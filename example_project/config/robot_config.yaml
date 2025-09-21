@@ -1,0 +1,45 @@
+# Robot-specific configuration for Python ROS Engine Example Project
+
+node:
+  name: robot_node
+  namespace: /robot
+
+publisher:
+  topic: /robot/status
+  qos:
+    reliability: reliable
+    durability: transient_local
+    depth: 5
+
+subscriber:
+  topic: /robot/commands
+  qos:
+    reliability: reliable
+    durability: volatile
+    depth: 10
+
+service:
+  name: /robot/calculate_path
+  qos:
+    reliability: reliable
+    durability: volatile
+    depth: 5
+
+parameters:
+  robot_id:
+    name: robot_id
+    value: "R001"
+    type: string
+  max_speed:
+    name: max_speed
+    value: 1.5
+    type: float
+  enable_logging:
+    name: enable_logging
+    value: true
+    type: bool
+
+bridge:
+  host: localhost
+  port: 11311
+  protocol: xmlrpc

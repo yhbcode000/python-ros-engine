@@ -288,6 +288,15 @@ See the [examples](./examples) directory for complete working examples:
 - [Client Example](./examples/client_example.py)
 - [Bridge Example](./examples/bridge_example.py)
 
+We've also included a [complete example project](./example_project) that demonstrates how to build a robot system with multiple interconnected nodes:
+
+- Publisher node that sends status messages
+- Subscriber node that listens to status messages
+- Service node that provides calculation services
+- Client node that calls calculation services
+- Launch system to run all nodes together
+- Configuration files using Hydra for flexible parameter management
+
 ## Testing
 
 Run tests with pytest:

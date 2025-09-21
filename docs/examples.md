@@ -42,6 +42,17 @@ This example demonstrates how to use the bridge functionality to discover native
 --8<-- "examples/bridge_example.py"
 ```
 
+## Complete Example Project
+
+In addition to the basic examples, we've included a complete example project in the `example_project/` directory that demonstrates how to build a robot system with multiple interconnected nodes.
+
+The complete example project includes:
+- Configuration files using Hydra for flexible parameter management
+- Publisher, subscriber, service, and client nodes
+- A launch system to run all nodes together as a cohesive robot system
+
+You can explore this complete example to understand how to structure a real-world application using the Python ROS Engine.
+
 ## Running Examples
 
 To run any of these examples, make sure you have installed the Python ROS Engine:
@@ -58,6 +69,16 @@ python examples/subscriber_example.py
 python examples/service_example.py
 python examples/client_example.py
 python examples/bridge_example.py
+```
+
+For the complete example project:
+
+```bash
+python example_project/nodes/publisher_node.py
+python example_project/nodes/subscriber_node.py
+python example_project/nodes/service_node.py
+python example_project/nodes/client_node.py
+python example_project/launch/robot_system.py
 ```
 
 Note: For the bridge example to work, you need to have a ROS master running on localhost:11311.

@@ -1,0 +1,33 @@
+# Default configuration for Python ROS Engine Example Project
+
+node:
+  name: example_node
+  namespace: /
+
+publisher:
+  topic: example_topic
+  qos:
+    reliability: reliable
+    durability: volatile
+    depth: 10
+
+subscriber:
+  topic: example_topic
+  qos:
+    reliability: reliable
+    durability: volatile
+    depth: 10
+
+service:
+  name: add_two_ints
+  qos:
+    reliability: reliable
+    durability: volatile
+    depth: 10
+
+parameters: {}
+
+bridge:
+  host: localhost
+  port: 11311
+  protocol: xmlrpc

@@ -29,7 +29,7 @@ node.spin()
 ### Publisher
 
 ```python
-from pyros2 import Node, Publisher
+from pyros2 import Node
 from pyros2.message import String
 
 class MyNode(Node):
@@ -50,7 +50,7 @@ node.spin()
 ### Subscriber
 
 ```python
-from pyros2 import Node, Subscriber
+from pyros2 import Node
 from pyros2.message import String
 
 class MyNode(Node):
@@ -69,7 +69,7 @@ node.spin()
 ### Service
 
 ```python
-from pyros2 import Node, Service
+from pyros2 import Node
 
 class AddTwoInts:
     class Request:
@@ -99,7 +99,8 @@ node.spin()
 ### Client
 
 ```python
-from pyros2 import Node, Client
+from pyros2 import Node
+import time
 
 class AddTwoInts:
     class Request:
@@ -115,6 +116,11 @@ class MyNode(Node):
     def __init__(self):
         super().__init__("client_node")
         self.client = self.create_client(AddTwoInts, "/add_two_ints")
+        
+        # Wait for service to be available
+        while not self.client.service_is_ready():
+            print("Waiting for service...")
+            time.sleep(1)
     
     def send_request(self, a, b):
         request = AddTwoInts.Request()
@@ -127,6 +133,52 @@ node = MyNode()
 # Send requests as needed
 result = node.send_request(3, 4)
 print(f"Result: {result.sum}")
+```
+
+## Advanced Usage
+
+### Quality of Service (QoS) Profiles
+
+The Python ROS Engine supports QoS profiles for publishers and subscribers:
+
+```python
+from pyros2 import Node, QoSProfile
+from pyros2.message import String
+
+class MyNode(Node):
+    def __init__(self):
+        super().__init__("qos_example_node")
+        
+        # Create a custom QoS profile
+        qos_profile = QoSProfile()
+        qos_profile.reliability = "reliable"  # or "best_effort"
+        qos_profile.durability = "transient_local"  # or "volatile"
+        qos_profile.depth = 10
+        
+        # Use the QoS profile with publisher/subscriber
+        self.publisher = self.create_publisher(String, "/my_topic", qos_profile)
+        self.subscription = self.create_subscription(String, "/my_topic", self.callback, qos_profile)
+    
+    def callback(self, msg):
+        print(f"Received: {msg.data}")
+```
+
+### Parameter Handling
+
+Nodes can handle parameters with callbacks:
+
+```python
+from pyros2 import Node
+
+class MyNode(Node):
+    def __init__(self):
+        super().__init__("parameter_node")
+        
+        # Declare a parameter with a callback
+        self.declare_parameter("my_param", "default_value", self.param_callback)
+    
+    def param_callback(self, param_name, old_value, new_value):
+        print(f"Parameter {param_name} changed from {old_value} to {new_value}")
 ```
 
 ## Configuration with Hydra
@@ -151,6 +203,13 @@ subscriber:
     reliability: reliable
     durability: volatile
     depth: 10
+
+service:
+  name: add_two_ints
+  qos:
+    reliability: reliable
+    durability: volatile
+    depth: 10
 ```
 
 Then use it in your code:
@@ -162,6 +221,44 @@ from config.hydra_config import load_config
 config = load_config("config.yaml")
 node = Node(config.node.name)
 ```
+
+## Complete Example Project
+
+We've included a complete example project in the repository that demonstrates how to build a robot system with multiple nodes. The example project includes:
+
+1. Configuration files using Hydra
+2. Publisher, subscriber, service, and client nodes
+3. A launch system to run all nodes together
+
+You can find the complete example in the `example_project/` directory of the repository.
+
+### Running the Complete Example
+
+To run the complete example project:
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/python-ros-engine.git
+   cd python-ros-engine
+   ```
+
+2. Install the package:
+   ```bash
+   pip install python-ros-engine
+   ```
+
+3. Run individual nodes:
+   ```bash
+   python example_project/nodes/publisher_node.py
+   python example_project/nodes/subscriber_node.py
+   python example_project/nodes/service_node.py
+   python example_project/nodes/client_node.py
+   ```
+
+4. Run the complete robot system:
+   ```bash
+   python example_project/launch/robot_system.py
+   ```
 
 ## Running Examples
 
