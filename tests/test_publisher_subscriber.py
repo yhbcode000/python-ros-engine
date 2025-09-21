@@ -1,6 +1,4 @@
-"""
-Tests for the Publisher and Subscriber classes in the Python ROS engine.
-"""
+"""Tests for the publisher and subscriber functionality in the Python ROS engine."""
 
 from pyros2 import Node
 from pyros2.message import String

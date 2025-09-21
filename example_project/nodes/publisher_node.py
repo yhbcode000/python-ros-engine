@@ -1,9 +1,9 @@
 """
 Example publisher node for the Python ROS Engine.
+
 Demonstrates creating a node with a publisher that sends messages to a topic.
 """
 
-import time
 from dataclasses import dataclass
 
 from config.hydra_config import load_config
@@ -56,7 +56,7 @@ class PublisherNode(Node):
 
 
 def main():
-    """Main function to run the publisher node."""
+    """Run the publisher node."""
     node = PublisherNode()
 
     try:

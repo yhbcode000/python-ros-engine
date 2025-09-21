@@ -1,18 +1,13 @@
 #!/usr/bin/env python3
-"""
-Command-line interface for launching ROS nodes using the Python ROS engine.
-"""
+"""Command-line interface for launching ROS nodes using the Python ROS engine."""
 
 import argparse
 import importlib
 import os
 import sys
-from typing import Any, Dict
-
-from pyros2 import LaunchDescription, LaunchSystem
 
 
-def load_launch_file(file_path: str) -> LaunchDescription:
+def load_launch_file(file_path: str):
     """
     Load a launch description from a Python file.
 
@@ -38,12 +33,13 @@ def load_launch_file(file_path: str) -> LaunchDescription:
         return module.generate_launch_description()
     else:
         raise ValueError(
-            f"Launch file {file_path} must define either 'launch_description' or 'generate_launch_description' function"
+            f"Launch file {file_path} must define either 'launch_description' "
+            f"or 'generate_launch_description' function"
         )
 
 
 def main():
-    """Main function for the launch CLI."""
+    """Run the launch CLI."""
     parser = argparse.ArgumentParser(
         description="Launch ROS nodes using Python ROS engine"
     )

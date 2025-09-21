@@ -1,6 +1,4 @@
-"""
-Tests for the Message classes in the Python ROS engine.
-"""
+"""Tests for the Message classes in the Python ROS engine."""
 
 from pyros2.message import Bool, Float32, Int32, Message, String
 

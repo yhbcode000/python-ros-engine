@@ -1,6 +1,4 @@
-"""
-Tests for the Hydra configuration system in the Python ROS engine.
-"""
+"""Tests for the configuration system in the Python ROS engine."""
 
 import os
 

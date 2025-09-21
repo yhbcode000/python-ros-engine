@@ -1,29 +1,22 @@
-"""
-Launch system implementation for the Python ROS engine.
-"""
+"""Launch system implementation for the Python ROS engine."""
 
 import importlib
 import sys
 import time
 from typing import Any, Callable, Dict, List
 
-from .client import Client
 from .discovery import Discovery
 from .node import Node
-from .publisher import Publisher
-from .service import Service
-from .subscriber import Subscriber
 
 
 class LaunchSystem:
-    """
-    Launch system for managing multiple nodes and providing system status information.
+    """Launch system for managing multiple nodes and providing system status.
+
+    This class manages multiple ROS nodes and provides system status information.
     """
 
     def __init__(self):
-        """
-        Initialize the launch system.
-        """
+        """Initialize the launch system."""
         self.nodes: Dict[str, Node] = {}
         self.running = False
 
@@ -90,9 +83,7 @@ class LaunchSystem:
             del self.nodes[node_name]
 
     def start(self):
-        """
-        Start all nodes in the launch system.
-        """
+        """Start all nodes in the launch system."""
         if self.running:
             print("Launch system is already running")
             return
@@ -114,9 +105,7 @@ class LaunchSystem:
             self.shutdown()
 
     def shutdown(self):
-        """
-        Shutdown all nodes in the launch system.
-        """
+        """Shutdown all nodes in the launch system."""
         self.running = False
         for node_name, node in self.nodes.items():
             print(f"Shutting down node '{node_name}'...")
@@ -135,7 +124,10 @@ class LaunchSystem:
             "nodes": {},
             "topics": {},
             "services": {},
-            "system_info": {"total_nodes": len(self.nodes), "running": self.running},
+            "system_info": {
+                "total_nodes": len(self.nodes),
+                "running": self.running,
+            },
         }
 
         # Get node information
@@ -221,9 +213,7 @@ class LaunchSystem:
         return status
 
     def print_system_status(self):
-        """
-        Print the status of the entire system in a human-readable format.
-        """
+        """Print the status of the entire system in a human-readable format."""
         status = self.get_system_status()
 
         print("=" * 50)
@@ -290,9 +280,7 @@ class LaunchSystem:
 
 
 class LaunchDescription:
-    """
-    Description of a launch system configuration.
-    """
+    """Description of a launch system configuration."""
 
     def __init__(self, launch_system: LaunchSystem = None):
         """
@@ -343,9 +331,7 @@ class LaunchDescription:
         self.actions.append(action)
 
     def execute(self):
-        """
-        Execute all actions in the launch description.
-        """
+        """Execute all actions in the launch description."""
         for action in self.actions:
             action()
         return self.launch_system

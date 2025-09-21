@@ -1,13 +1,11 @@
-"""
-Example bridge usage for the Python ROS engine.
-"""
+"""Example bridge usage for the Python ROS engine."""
 
 from pyros2 import Bridge
 from pyros2.exceptions import BridgeConnectionError
 
 
 def main():
-    """Main function to demonstrate bridge functionality."""
+    """Run the bridge example."""
     # Create bridge connection
     bridge = Bridge()
 

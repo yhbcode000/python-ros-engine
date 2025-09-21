@@ -1,6 +1,4 @@
-"""
-Service implementation for the Python ROS engine.
-"""
+"""Service implementation for the Python ROS engine."""
 
 from typing import TYPE_CHECKING, Callable, Dict
 
@@ -12,9 +10,7 @@ from .qos import QoSProfile
 
 
 class Service:
-    """
-    Service server for handling requests.
-    """
+    """Service server for handling requests."""
 
     # Class variable to store all services
     _service_registry: Dict[str, "Service"] = {}
@@ -79,7 +75,5 @@ class Service:
 
     @classmethod
     def clear_registry(cls):
-        """
-        Clear the service registry. Used for testing.
-        """
+        """Clear the service registry. Used for testing."""
         cls._service_registry.clear()

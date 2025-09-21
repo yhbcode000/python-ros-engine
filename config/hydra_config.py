@@ -1,6 +1,4 @@
-"""
-Hydra configuration system for the Python ROS engine.
-"""
+"""Hydra configuration system for the Python ROS engine."""
 
 from dataclasses import dataclass, field
 from typing import Any, Dict, Optional
@@ -13,9 +11,7 @@ from pyros2.qos import QoSProfile
 
 @dataclass
 class NodeConfig:
-    """
-    Configuration for a ROS node.
-    """
+    """Configuration for a ROS node."""
 
     name: str = "default_node"
     namespace: str = "/"
@@ -23,9 +19,7 @@ class NodeConfig:
 
 @dataclass
 class PublisherConfig:
-    """
-    Configuration for a ROS publisher.
-    """
+    """Configuration for a ROS publisher."""
 
     topic: str = "default_topic"
     qos: QoSProfile = field(default_factory=QoSProfile)
@@ -33,9 +27,7 @@ class PublisherConfig:
 
 @dataclass
 class SubscriberConfig:
-    """
-    Configuration for a ROS subscriber.
-    """
+    """Configuration for a ROS subscriber."""
 
     topic: str = "default_topic"
     qos: QoSProfile = field(default_factory=QoSProfile)
@@ -43,9 +35,7 @@ class SubscriberConfig:
 
 @dataclass
 class ServiceConfig:
-    """
-    Configuration for a ROS service.
-    """
+    """Configuration for a ROS service."""
 
     name: str = "default_service"
     qos: QoSProfile = field(default_factory=QoSProfile)
@@ -53,9 +43,7 @@ class ServiceConfig:
 
 @dataclass
 class ParameterConfig:
-    """
-    Configuration for ROS parameters.
-    """
+    """Configuration for ROS parameters."""
 
     name: str = ""
     value: Any = None
@@ -64,9 +52,7 @@ class ParameterConfig:
 
 @dataclass
 class BridgeConfig:
-    """
-    Configuration for ROS bridge.
-    """
+    """Configuration for ROS bridge."""
 
     host: str = "localhost"
     port: int = 11311  # Default ROS master port
@@ -75,9 +61,7 @@ class BridgeConfig:
 
 @dataclass
 class ROSConfig:
-    """
-    Main configuration class for the Python ROS engine.
-    """
+    """Main configuration class for the Python ROS engine."""
 
     node: NodeConfig = field(default_factory=NodeConfig)
     publisher: Optional[PublisherConfig] = None

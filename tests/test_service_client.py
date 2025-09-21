@@ -1,6 +1,4 @@
-"""
-Tests for the Service and Client classes in the Python ROS engine.
-"""
+"""Tests for the service and client functionality in the Python ROS engine."""
 
 from pyros2 import Node
 from pyros2.client import Client

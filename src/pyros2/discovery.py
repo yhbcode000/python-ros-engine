@@ -1,6 +1,4 @@
-"""
-Discovery implementation for the Python ROS engine.
-"""
+"""Discovery implementation for the Python ROS engine."""
 
 from typing import List
 
@@ -9,9 +7,7 @@ from .service import Service
 
 
 class Discovery:
-    """
-    Discovery mechanisms for topics and services.
-    """
+    """Discovery mechanisms for topics and services."""
 
     @staticmethod
     def get_all_topics() -> List[str]:

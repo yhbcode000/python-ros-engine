@@ -1,5 +1,6 @@
 """
 Example launch system for the Python ROS Engine.
+
 Demonstrates how to launch multiple nodes together as a robot system.
 """
 
@@ -100,7 +101,7 @@ class RobotSystem:
 
 
 def main():
-    """Main function to run the complete robot system."""
+    """Run the complete robot system."""
     robot_system = RobotSystem()
 
     try:

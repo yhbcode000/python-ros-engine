@@ -1,6 +1,4 @@
-"""
-Example subscriber node for the Python ROS engine.
-"""
+"""Example subscriber node for the Python ROS engine."""
 
 from pyros2 import Node
 from pyros2.message import String
@@ -17,11 +15,11 @@ class SubscriberNode(Node):
         )
 
     def message_callback(self, msg):
-        """Callback function for received messages."""
+        """Handle received messages."""
         self.get_logger().info(f"Received: {msg.data}")
 
     def get_logger(self):
-        """Simple logger for demonstration."""
+        """Create a simple logger for demonstration."""
 
         class Logger:
             def info(self, message):
@@ -31,7 +29,7 @@ class SubscriberNode(Node):
 
 
 def main():
-    """Main function to run the subscriber node."""
+    """Run the subscriber node."""
     node = SubscriberNode()
 
     try:

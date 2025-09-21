@@ -1,3 +1,1 @@
-"""
-Nodes package for the Python ROS Engine example project.
-"""
+"""Nodes package for the Python ROS Engine example project."""

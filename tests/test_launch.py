@@ -1,6 +1,4 @@
-"""
-Tests for the LaunchSystem in the Python ROS engine.
-"""
+"""Tests for the LaunchSystem in the Python ROS engine."""
 
 from pyros2 import LaunchDescription, LaunchSystem
 from pyros2.message import String
@@ -10,6 +8,7 @@ class MockNode:
     """Mock node for testing."""
 
     def __init__(self, name):
+        """Initialize the mock node."""
         from pyros2 import Node
 
         self._node = Node(name)

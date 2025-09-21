@@ -1,6 +1,4 @@
-"""
-Bridge implementation for interacting with native ROS nodes.
-"""
+"""Bridge implementation for interacting with native ROS nodes."""
 
 import xmlrpc.client
 from typing import Any, Dict, List
@@ -9,9 +7,7 @@ from .exceptions import BridgeConnectionError
 
 
 class Bridge:
-    """
-    Bridge for discovering and interacting with native ROS nodes.
-    """
+    """Bridge for discovering and interacting with native ROS nodes."""
 
     def __init__(self, host: str = "localhost", port: int = 11311):
         """
@@ -27,9 +23,7 @@ class Bridge:
         self._master = None
 
     def connect(self):
-        """
-        Connect to the ROS master.
-        """
+        """Connect to the ROS master."""
         try:
             self._master = xmlrpc.client.ServerProxy(self._master_uri)
             # Test connection

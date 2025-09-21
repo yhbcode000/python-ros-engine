@@ -1,6 +1,4 @@
-"""
-Tests for the QoS profiles in the Python ROS engine.
-"""
+"""Tests for the QoS functionality in the Python ROS engine."""
 
 import pytest
 

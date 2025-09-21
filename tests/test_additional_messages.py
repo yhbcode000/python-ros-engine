@@ -1,6 +1,4 @@
-"""
-Tests for the additional message types in the Python ROS engine.
-"""
+"""Tests for the additional message types in the Python ROS engine."""
 
 from pyros2.message import (
     Bool,

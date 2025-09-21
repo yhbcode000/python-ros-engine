@@ -1,6 +1,4 @@
-"""
-Tests for the MessageTranslator class in the Python ROS engine.
-"""
+"""Tests for the MessageTranslator in the Python ROS engine."""
 
 from pyros2.message import (
     Bool,

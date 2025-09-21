@@ -1,6 +1,4 @@
-"""
-Timer implementation for the Python ROS engine.
-"""
+"""Timer implementation for the Python ROS engine."""
 
 import threading
 import time
@@ -8,9 +6,7 @@ from typing import Callable
 
 
 class Timer:
-    """
-    Timer for executing callbacks at regular intervals.
-    """
+    """Timer for executing callbacks at regular intervals."""
 
     def __init__(self, period: float, callback: Callable):
         """
@@ -29,25 +25,19 @@ class Timer:
         self._start_timer()
 
     def _start_timer(self):
-        """
-        Start the timer thread.
-        """
+        """Start the timer thread."""
         self._thread = threading.Thread(target=self._timer_loop, daemon=True)
         self._thread.start()
 
     def _timer_loop(self):
-        """
-        Timer loop that executes the callback at regular intervals.
-        """
+        """Timer loop that executes the callback at regular intervals."""
         while not self._is_canceled:
             time.sleep(self.period)
             if not self._is_canceled:
                 self._callback()
 
     def cancel(self):
-        """
-        Cancel the timer.
-        """
+        """Cancel the timer."""
         self._is_canceled = True
 
     def is_canceled(self) -> bool:
@@ -60,9 +50,7 @@ class Timer:
         return self._is_canceled
 
     def reset(self):
-        """
-        Reset the timer.
-        """
+        """Reset the timer."""
         self.cancel()
         self._is_canceled = False
         self._start_timer()

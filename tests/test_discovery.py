@@ -1,6 +1,4 @@
-"""
-Tests for the Discovery functionality in the Python ROS engine.
-"""
+"""Tests for the discovery system in the Python ROS engine."""
 
 from pyros2 import Node
 from pyros2.discovery import Discovery

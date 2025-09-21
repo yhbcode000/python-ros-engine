@@ -1,6 +1,4 @@
-"""
-Subscriber implementation for the Python ROS engine.
-"""
+"""Subscriber implementation for the Python ROS engine."""
 
 from typing import TYPE_CHECKING, Callable
 
@@ -13,9 +11,7 @@ from .qos import QoSProfile
 
 
 class Subscriber:
-    """
-    Subscriber for receiving messages from a topic.
-    """
+    """Subscriber for receiving messages from a topic."""
 
     def __init__(
         self,

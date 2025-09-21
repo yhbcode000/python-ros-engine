@@ -1,11 +1,12 @@
-"""
-Tests for the Parameter functionality in the Python ROS engine.
-"""
+"""Tests for the parameter system in the Python ROS engine."""
 
 import pytest
 
 from pyros2 import Node
-from pyros2.exceptions import ParameterAlreadyDeclaredError, ParameterNotDeclaredError
+from pyros2.exceptions import (
+    ParameterAlreadyDeclaredError,
+    ParameterNotDeclaredError,
+)
 
 
 class TestParameter:

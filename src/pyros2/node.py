@@ -1,6 +1,4 @@
-"""
-Node implementation for the Python ROS engine.
-"""
+"""Node implementation for the Python ROS engine."""
 
 import time
 from dataclasses import dataclass
@@ -22,9 +20,7 @@ from .qos import QoSProfile
 
 @dataclass
 class Parameter:
-    """
-    A parameter with a name, value, and type.
-    """
+    """A parameter with a name, value, and type."""
 
     name: str
     value: Any
@@ -32,9 +28,7 @@ class Parameter:
 
 
 class Node:
-    """
-    Base class for a ROS node.
-    """
+    """Base class for a ROS node."""
 
     def __init__(self, node_name: str, namespace: str = "/"):
         """
@@ -350,9 +344,7 @@ class Node:
         return []
 
     def spin(self):
-        """
-        Spin the node to process callbacks.
-        """
+        """Spin the node to process callbacks."""
         if not self._is_initialized:
             raise NodeNotInitializedError("Node must be initialized before spinning")
 
@@ -381,8 +373,6 @@ class Node:
         time.sleep(min(timeout_sec, 0.1))
 
     def destroy_node(self):
-        """
-        Destroy the node and clean up resources.
-        """
+        """Destroy the node and clean up resources."""
         self._is_shutdown = True
         print(f"Node '{self.node_name}' destroyed.")

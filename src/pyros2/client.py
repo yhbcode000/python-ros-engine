@@ -1,6 +1,4 @@
-"""
-Client implementation for the Python ROS engine.
-"""
+"""Client implementation for the Python ROS engine."""
 
 import asyncio
 from typing import TYPE_CHECKING
@@ -13,9 +11,7 @@ from .qos import QoSProfile
 
 
 class Client:
-    """
-    Service client for calling services.
-    """
+    """Service client for calling services."""
 
     def __init__(
         self, node: "Node", srv_type: type, service_name: str, qos_profile: QoSProfile

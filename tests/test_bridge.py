@@ -1,6 +1,4 @@
-"""
-Tests for the Bridge functionality in the Python ROS engine.
-"""
+"""Tests for the ROS bridge functionality in the Python ROS engine."""
 
 import pytest
 

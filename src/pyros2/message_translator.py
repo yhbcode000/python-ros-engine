@@ -1,6 +1,4 @@
-"""
-Message translation layer for bridging Python ROS engine with native ROS.
-"""
+"""Message translation layer for bridging Python ROS engine with native ROS."""
 
 from typing import Any, Dict, Type
 
@@ -38,8 +36,10 @@ from .message import (
 
 
 class MessageTranslator:
-    """
-    Handles translation between Python ROS engine messages and native ROS messages.
+    """Handles translation between Python ROS engine and native ROS messages.
+
+    This class provides methods to translate between Python ROS engine message
+    formats and native ROS message formats for bridging functionality.
     """
 
     # Mapping of native ROS message types to Python ROS engine message types
@@ -141,12 +141,14 @@ class MessageTranslator:
 
     @classmethod
     def get_pyros_type(cls, ros_message_type: str) -> Type[Message]:
-        """
-        Get the corresponding Python ROS engine message type for a native ROS
-        message type.
+        """Get the corresponding Python ROS engine message type.
+
+        Get the corresponding Python ROS engine message type for
+        a native ROS message type.
 
         Args:
-            ros_message_type: Native ROS message type (e.g., "std_msgs/String")
+            ros_message_type: Native ROS message type (e.g.,
+                "std_msgs/String")
 
         Returns:
             Type[Message]: Corresponding Python ROS engine message type
@@ -155,9 +157,10 @@ class MessageTranslator:
 
     @classmethod
     def get_ros_type(cls, pyros_message_type: Type[Message]) -> str:
-        """
-        Get the corresponding native ROS message type for a Python ROS engine
-        message type.
+        """Get the corresponding native ROS message type.
+
+        Get the corresponding native ROS message type for a
+        Python ROS engine message type.
 
         Args:
             pyros_message_type: Python ROS engine message type

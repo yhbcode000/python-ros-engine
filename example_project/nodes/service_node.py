@@ -1,5 +1,6 @@
 """
 Example service node for the Python ROS Engine.
+
 Demonstrates creating a node that provides a service.
 """
 
@@ -11,12 +12,18 @@ class AddTwoInts:
     """Service definition for adding two integers."""
 
     class Request:
+        """Request for adding two integers."""
+
         def __init__(self, a=0, b=0):
+            """Initialize the request with two integers."""
             self.a = a
             self.b = b
 
     class Response:
+        """Response containing the sum of two integers."""
+
         def __init__(self, sum=0):
+            """Initialize the response with the sum."""
             self.sum = sum
 
 
@@ -50,7 +57,7 @@ class ServiceNode(Node):
         return response
 
     def get_logger(self):
-        """Simple logger for demonstration."""
+        """Get a simple logger for demonstration."""
 
         class Logger:
             def info(self, message):
@@ -60,7 +67,7 @@ class ServiceNode(Node):
 
 
 def main():
-    """Main function to run the service node."""
+    """Run the service node."""
     node = ServiceNode()
 
     try:

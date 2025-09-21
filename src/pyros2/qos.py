@@ -1,24 +1,18 @@
-"""
-Quality of Service (QoS) profiles for the Python ROS engine.
-"""
+"""Quality of Service (QoS) profiles for the Python ROS engine."""
 
 from dataclasses import dataclass
 from enum import Enum
 
 
 class ReliabilityPolicy(Enum):
-    """
-    Reliability policy for message delivery.
-    """
+    """Reliability policy for message delivery."""
 
     RELIABLE = "reliable"  # Guaranteed delivery
     BEST_EFFORT = "best_effort"  # No guarantee of delivery
 
 
 class DurabilityPolicy(Enum):
-    """
-    Durability policy for message persistence.
-    """
+    """Durability policy for message persistence."""
 
     TRANSIENT_LOCAL = "transient_local"  # Replays last message for late subscribers
     VOLATILE = "volatile"  # No message replay
@@ -26,15 +20,14 @@ class DurabilityPolicy(Enum):
 
 @dataclass
 class QoSProfile:
-    """
-    Quality of Service profile defining communication policies.
-    """
+    """Quality of Service profile defining communication policies."""
 
     reliability: ReliabilityPolicy = ReliabilityPolicy.RELIABLE
     durability: DurabilityPolicy = DurabilityPolicy.VOLATILE
     depth: int = 10
 
     def __post_init__(self):
+        """Validate QoS profile parameters."""
         if not isinstance(self.reliability, ReliabilityPolicy):
             raise TypeError("reliability must be a ReliabilityPolicy enum")
         if not isinstance(self.durability, DurabilityPolicy):

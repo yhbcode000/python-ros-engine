@@ -1,6 +1,4 @@
-"""
-Python ROS2 Engine package.
-"""
+"""Python ROS2 Engine package."""
 
 from .bridge import Bridge
 from .client import Client

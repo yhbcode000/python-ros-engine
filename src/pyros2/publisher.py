@@ -1,6 +1,4 @@
-"""
-Publisher implementation for the Python ROS engine.
-"""
+"""Publisher implementation for the Python ROS engine."""
 
 from typing import TYPE_CHECKING, Dict, List
 
@@ -14,9 +12,7 @@ from .qos import QoSProfile
 
 
 class Publisher:
-    """
-    Publisher for sending messages to a topic.
-    """
+    """Publisher for sending messages to a topic."""
 
     # Class variable to store all topics and their messages
     _topic_registry: Dict[str, List[Message]] = {}
@@ -99,8 +95,6 @@ class Publisher:
 
     @classmethod
     def clear_registry(cls):
-        """
-        Clear the topic and subscriber registries. Used for testing.
-        """
+        """Clear the topic and subscriber registries. Used for testing."""
         cls._topic_registry.clear()
         cls._subscriber_registry.clear()

@@ -1,6 +1,4 @@
-"""
-Example publisher node for the Python ROS engine.
-"""
+"""Example publisher node for the Python ROS engine."""
 
 import time
 
@@ -26,7 +24,7 @@ class PublisherNode(Node):
         self.counter += 1
 
     def get_logger(self):
-        """Simple logger for demonstration."""
+        """Get a simple logger for demonstration."""
 
         class Logger:
             def info(self, message):
@@ -36,7 +34,7 @@ class PublisherNode(Node):
 
 
 def main():
-    """Main function to run the publisher node."""
+    """Run the publisher node."""
     node = PublisherNode()
 
     try:

@@ -1,6 +1,4 @@
-"""
-Base message classes for the Python ROS engine.
-"""
+"""Base message classes for the Python ROS engine."""
 
 import json
 from dataclasses import dataclass
@@ -8,17 +6,14 @@ from typing import List
 
 
 class Message:
-    """
-    Base class for all ROS messages.
-    """
+    """Base class for all ROS messages."""
 
     def __init__(self):
+        """Initialize the message."""
         pass
 
     def serialize(self) -> bytes:
-        """
-        Serialize the message to bytes.
-        """
+        """Serialize the message to bytes."""
 
         def serialize_object(obj):
             # Handle dataclass objects (including nested ones)
@@ -45,138 +40,109 @@ class Message:
 
     @classmethod
     def deserialize(cls, data: bytes):
-        """
-        Deserialize bytes to a message instance.
-        """
+        """Deserialize bytes to a message instance."""
         data_dict = json.loads(data.decode("utf-8"))
         return cls(**data_dict)
 
     def __repr__(self):
+        """Return a string representation of the message."""
         return f"{self.__class__.__name__}({self.__dict__})"
 
 
 @dataclass
 class String(Message):
-    """
-    String message type.
-    """
+    """String message type."""
 
     data: str = ""
 
 
 @dataclass
 class Int8(Message):
-    """
-    8-bit integer message type.
-    """
+    """8-bit integer message type."""
 
     data: int = 0
 
 
 @dataclass
 class Int16(Message):
-    """
-    16-bit integer message type.
-    """
+    """16-bit integer message type."""
 
     data: int = 0
 
 
 @dataclass
 class Int32(Message):
-    """
-    32-bit integer message type.
-    """
+    """32-bit integer message type."""
 
     data: int = 0
 
 
 @dataclass
 class Int64(Message):
-    """
-    64-bit integer message type.
-    """
+    """64-bit integer message type."""
 
     data: int = 0
 
 
 @dataclass
 class UInt8(Message):
-    """
-    8-bit unsigned integer message type.
-    """
+    """8-bit unsigned integer message type."""
 
     data: int = 0
 
 
 @dataclass
 class UInt16(Message):
-    """
-    16-bit unsigned integer message type.
-    """
+    """16-bit unsigned integer message type."""
 
     data: int = 0
 
 
 @dataclass
 class UInt32(Message):
-    """
-    32-bit unsigned integer message type.
-    """
+    """32-bit unsigned integer message type."""
 
     data: int = 0
 
 
 @dataclass
 class UInt64(Message):
-    """
-    64-bit unsigned integer message type.
-    """
+    """64-bit unsigned integer message type."""
 
     data: int = 0
 
 
 @dataclass
 class Float32(Message):
-    """
-    32-bit float message type.
-    """
+    """32-bit float message type."""
 
     data: float = 0.0
 
 
 @dataclass
 class Float64(Message):
-    """
-    64-bit float message type.
-    """
+    """64-bit float message type."""
 
     data: float = 0.0
 
 
 @dataclass
 class Bool(Message):
-    """
-    Boolean message type.
-    """
+    """Boolean message type."""
 
     data: bool = False
 
 
 @dataclass
 class Empty(Message):
-    """
-    Empty message type.
-    """
+    """Empty message type."""
 
     pass
 
 
 @dataclass
 class MultiArrayDimension:
-    """
-    Dimension description for multi-dimensional arrays.
-    """
+    """Dimension description for multi-dimensional arrays."""
 
     label: str = ""
     size: int = 0
@@ -185,14 +151,13 @@ class MultiArrayDimension:
 
 @dataclass
 class MultiArrayLayout:
-    """
-    Layout description for multi-dimensional arrays.
-    """
+    """Layout description for multi-dimensional arrays."""
 
     dim: List[MultiArrayDimension] = None
     data_offset: int = 0
 
     def __post_init__(self):
+        """Initialize default values for MultiArrayLayout."""
         if self.dim is None:
             self.dim = []
         # Reconstruct MultiArrayDimension objects from dictionaries if needed
@@ -217,14 +182,13 @@ class MultiArrayLayout:
 
 @dataclass
 class ByteMultiArray(Message):
-    """
-    Multi-array of bytes.
-    """
+    """Multi-array of bytes."""
 
     layout: MultiArrayLayout = None
     data: List[int] = None
 
     def __post_init__(self):
+        """Initialize default values for ByteMultiArray."""
         if self.layout is None:
             self.layout = MultiArrayLayout()
         elif isinstance(self.layout, dict):
@@ -245,18 +209,18 @@ class ByteMultiArray(Message):
             )
         if self.data is None:
             self.data = []
+            self.data = []
 
 
 @dataclass
 class Int8MultiArray(Message):
-    """
-    Multi-array of Int8 values.
-    """
+    """Multi-array of Int8 values."""
 
     layout: MultiArrayLayout = None
     data: List[int] = None
 
     def __post_init__(self):
+        """Initialize default values for Int8MultiArray."""
         if self.layout is None:
             self.layout = MultiArrayLayout()
         elif isinstance(self.layout, dict):
@@ -281,14 +245,13 @@ class Int8MultiArray(Message):
 
 @dataclass
 class Int16MultiArray(Message):
-    """
-    Multi-array of Int16 values.
-    """
+    """Multi-array of Int16 values."""
 
     layout: MultiArrayLayout = None
     data: List[int] = None
 
     def __post_init__(self):
+        """Initialize default values for Int16MultiArray."""
         if self.layout is None:
             self.layout = MultiArrayLayout()
         elif isinstance(self.layout, dict):
@@ -313,14 +276,13 @@ class Int16MultiArray(Message):
 
 @dataclass
 class Int32MultiArray(Message):
-    """
-    Multi-array of Int32 values.
-    """
+    """Multi-array of Int32 values."""
 
     layout: MultiArrayLayout = None
     data: List[int] = None
 
     def __post_init__(self):
+        """Initialize default values for Int32MultiArray."""
         if self.layout is None:
             self.layout = MultiArrayLayout()
         elif isinstance(self.layout, dict):
@@ -345,14 +307,13 @@ class Int32MultiArray(Message):
 
 @dataclass
 class Int64MultiArray(Message):
-    """
-    Multi-array of Int64 values.
-    """
+    """Multi-array of Int64 values."""
 
     layout: MultiArrayLayout = None
     data: List[int] = None
 
     def __post_init__(self):
+        """Initialize default values for Int64MultiArray."""
         if self.layout is None:
             self.layout = MultiArrayLayout()
         elif isinstance(self.layout, dict):
@@ -377,14 +338,13 @@ class Int64MultiArray(Message):
 
 @dataclass
 class UInt8MultiArray(Message):
-    """
-    Multi-array of UInt8 values.
-    """
+    """Multi-array of UInt8 values."""
 
     layout: MultiArrayLayout = None
     data: List[int] = None
 
     def __post_init__(self):
+        """Initialize default values for UInt8MultiArray."""
         if self.layout is None:
             self.layout = MultiArrayLayout()
         elif isinstance(self.layout, dict):
@@ -409,14 +369,13 @@ class UInt8MultiArray(Message):
 
 @dataclass
 class UInt16MultiArray(Message):
-    """
-    Multi-array of UInt16 values.
-    """
+    """Multi-array of UInt16 values."""
 
     layout: MultiArrayLayout = None
     data: List[int] = None
 
     def __post_init__(self):
+        """Initialize default values for UInt16MultiArray."""
         if self.layout is None:
             self.layout = MultiArrayLayout()
         elif isinstance(self.layout, dict):
@@ -441,14 +400,13 @@ class UInt16MultiArray(Message):
 
 @dataclass
 class UInt32MultiArray(Message):
-    """
-    Multi-array of UInt32 values.
-    """
+    """Multi-array of UInt32 values."""
 
     layout: MultiArrayLayout = None
     data: List[int] = None
 
     def __post_init__(self):
+        """Initialize default values for UInt32MultiArray."""
         if self.layout is None:
             self.layout = MultiArrayLayout()
         elif isinstance(self.layout, dict):
@@ -473,14 +431,13 @@ class UInt32MultiArray(Message):
 
 @dataclass
 class UInt64MultiArray(Message):
-    """
-    Multi-array of UInt64 values.
-    """
+    """Multi-array of UInt64 values."""
 
     layout: MultiArrayLayout = None
     data: List[int] = None
 
     def __post_init__(self):
+        """Initialize default values for UInt64MultiArray."""
         if self.layout is None:
             self.layout = MultiArrayLayout()
         elif isinstance(self.layout, dict):
@@ -505,14 +462,13 @@ class UInt64MultiArray(Message):
 
 @dataclass
 class Float32MultiArray(Message):
-    """
-    Multi-array of Float32 values.
-    """
+    """Multi-array of Float32 values."""
 
     layout: MultiArrayLayout = None
     data: List[float] = None
 
     def __post_init__(self):
+        """Initialize default values for Float32MultiArray."""
         if self.layout is None:
             self.layout = MultiArrayLayout()
         elif isinstance(self.layout, dict):
@@ -533,18 +489,18 @@ class Float32MultiArray(Message):
             )
         if self.data is None:
             self.data = []
+            self.data = []
 
 
 @dataclass
 class Float64MultiArray(Message):
-    """
-    Multi-array of Float64 values.
-    """
+    """Multi-array of Float64 values."""
 
     layout: MultiArrayLayout = None
     data: List[float] = None
 
     def __post_init__(self):
+        """Initialize default values for Float64MultiArray."""
         if self.layout is None:
             self.layout = MultiArrayLayout()
         elif isinstance(self.layout, dict):
@@ -569,9 +525,7 @@ class Float64MultiArray(Message):
 
 @dataclass
 class Time(Message):
-    """
-    Time message type.
-    """
+    """Time message type."""
 
     secs: int = 0
     nsecs: int = 0
@@ -579,9 +533,7 @@ class Time(Message):
 
 @dataclass
 class Duration(Message):
-    """
-    Duration message type.
-    """
+    """Duration message type."""
 
     secs: int = 0
     nsecs: int = 0

@@ -1,6 +1,4 @@
-"""
-Tests for the Node class in the Python ROS engine.
-"""
+"""Tests for the Node class in the Python ROS engine."""
 
 from pyros2 import Node
 from pyros2.message import String
