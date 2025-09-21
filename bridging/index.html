@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Python ROS Engine Team" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Bridging with Native ROS - Python ROS Engine</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../custom.css" rel="stylesheet" />
+  
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Bridging with Native ROS";
+        var mkdocs_page_input_path = "bridging.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script>
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({startOnLoad: true});
+  </script>
+ 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Python ROS Engine
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../installation/">Installation</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../usage/">Usage Guide</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../api/">API Documentation</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../launch/">Launch System</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Bridging with Native ROS</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#bridge-architecture">🏗️ Bridge Architecture</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#ros-communication-patterns">🔄 ROS Communication Patterns</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#bridge-connection">🔌 Bridge Connection</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#discovering-ros-nodes">🔍 Discovering ROS Nodes</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#discovering-ros-topics">🔍 Discovering ROS Topics</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#discovering-ros-services">🔍 Discovering ROS Services</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#requirements-for-bridging">✅ Requirements for Bridging</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#setting-up-ros-master">⚙️ Setting up ROS Master</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#limitations">⚠️ Limitations</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../examples/">Examples</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../contributing/">Contributing</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../license/">License</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Python ROS Engine</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Bridging with Native ROS</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="bridging-with-native-ros">🌉 Bridging with Native ROS<a class="headerlink" href="#bridging-with-native-ros" title="Permanent link">&para;</a></h1>
+<p>The Python ROS engine provides capabilities to discover and interact with native ROS nodes.</p>
+<h2 id="bridge-architecture">🏗️ Bridge Architecture<a class="headerlink" href="#bridge-architecture" title="Permanent link">&para;</a></h2>
+<p>The bridge enables communication between Python ROS Engine and native ROS systems:</p>
+<pre class="mermaid">
+graph LR
+    A[Python ROS Engine] -- Message Translation --> B[(ROS Bridge)]
+    B -- XMLRPC/Socket --> C[ROS Master]
+    B -- TCP/UDP --> D[Native ROS Nodes]
+    A -- TCP/UDP --> E[Native ROS Nodes]
+</pre>
+
+<p>Here's a sequence diagram showing the discovery process:</p>
+<pre class="mermaid">
+sequenceDiagram
+    participant PyROSNode
+    participant Bridge
+    participant ROSMaster
+    PyROSNode->>Bridge: connect()
+    Bridge->>ROSMaster: XMLRPC discovery request
+    ROSMaster->>Bridge: discovery response
+    Bridge->>PyROSNode: return discovery data
+</pre>
+
+<h2 id="ros-communication-patterns">🔄 ROS Communication Patterns<a class="headerlink" href="#ros-communication-patterns" title="Permanent link">&para;</a></h2>
+<p>When bridging with native ROS, various communication patterns are supported:</p>
+<pre class="mermaid">
+graph TD
+    A[Communication Patterns] --> B[Topics - Publisher/Subscriber]
+    A --> C[Services - Request/Response]
+    A --> D[Parameters - Key/Value Storage]
+    B --> B1[Asynchronous Messaging]
+    C --> C1[Synchronous Communication]
+    D --> D1[Configuration Management]
+</pre>
+
+<h2 id="bridge-connection">🔌 Bridge Connection<a class="headerlink" href="#bridge-connection" title="Permanent link">&para;</a></h2>
+<p>The bridge connects to the ROS master using XMLRPC protocol:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pyros2</span><span class="w"> </span><span class="kn">import</span> <span class="n">Bridge</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="c1"># Default connection (localhost:11311)</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="n">bridge</span> <span class="o">=</span> <span class="n">Bridge</span><span class="p">()</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="c1"># Custom connection</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="n">bridge</span> <span class="o">=</span> <span class="n">Bridge</span><span class="p">(</span><span class="s2">&quot;192.168.1.100&quot;</span><span class="p">,</span> <span class="mi">11312</span><span class="p">)</span>
+</span></code></pre></div>
+<h2 id="discovering-ros-nodes">🔍 Discovering ROS Nodes<a class="headerlink" href="#discovering-ros-nodes" title="Permanent link">&para;</a></h2>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pyros2</span><span class="w"> </span><span class="kn">import</span> <span class="n">Bridge</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">bridge</span> <span class="o">=</span> <span class="n">Bridge</span><span class="p">()</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="k">try</span><span class="p">:</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    <span class="n">bridge</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>    <span class="n">nodes</span> <span class="o">=</span> <span class="n">bridge</span><span class="o">.</span><span class="n">discover_ros_nodes</span><span class="p">()</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Discovered ROS nodes:&quot;</span><span class="p">)</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>    <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">nodes</span><span class="p">:</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  - </span><span class="si">{</span><span class="n">node</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="k">except</span> <span class="n">BridgeConnectionError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Failed to connect: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+<h2 id="discovering-ros-topics">🔍 Discovering ROS Topics<a class="headerlink" href="#discovering-ros-topics" title="Permanent link">&para;</a></h2>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pyros2</span><span class="w"> </span><span class="kn">import</span> <span class="n">Bridge</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="n">bridge</span> <span class="o">=</span> <span class="n">Bridge</span><span class="p">()</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="k">try</span><span class="p">:</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    <span class="n">bridge</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    <span class="n">topics</span> <span class="o">=</span> <span class="n">bridge</span><span class="o">.</span><span class="n">discover_ros_topics</span><span class="p">()</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Discovered ROS topics:&quot;</span><span class="p">)</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>    <span class="k">for</span> <span class="n">topic</span> <span class="ow">in</span> <span class="n">topics</span><span class="p">:</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  - </span><span class="si">{</span><span class="n">topic</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> (type: </span><span class="si">{</span><span class="n">topic</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="k">except</span> <span class="n">BridgeConnectionError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Failed to connect: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+<h2 id="discovering-ros-services">🔍 Discovering ROS Services<a class="headerlink" href="#discovering-ros-services" title="Permanent link">&para;</a></h2>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pyros2</span><span class="w"> </span><span class="kn">import</span> <span class="n">Bridge</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="n">bridge</span> <span class="o">=</span> <span class="n">Bridge</span><span class="p">()</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="k">try</span><span class="p">:</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>    <span class="n">bridge</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>    <span class="n">services</span> <span class="o">=</span> <span class="n">bridge</span><span class="o">.</span><span class="n">discover_ros_services</span><span class="p">()</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Discovered ROS services:&quot;</span><span class="p">)</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>    <span class="k">for</span> <span class="n">service</span> <span class="ow">in</span> <span class="n">services</span><span class="p">:</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  - </span><span class="si">{</span><span class="n">service</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> (providers: </span><span class="si">{</span><span class="n">service</span><span class="p">[</span><span class="s1">&#39;providers&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="k">except</span> <span class="n">BridgeConnectionError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Failed to connect: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+<h2 id="requirements-for-bridging">✅ Requirements for Bridging<a class="headerlink" href="#requirements-for-bridging" title="Permanent link">&para;</a></h2>
+<p>To use the bridging capabilities, you need:</p>
+<ol>
+<li>🤖 A running ROS master (ROS1)</li>
+<li>🌐 Network connectivity to the ROS master</li>
+<li>🔐 Proper permissions to access the ROS master</li>
+</ol>
+<h2 id="setting-up-ros-master">⚙️ Setting up ROS Master<a class="headerlink" href="#setting-up-ros-master" title="Permanent link">&para;</a></h2>
+<p>If you don't have ROS installed, you can run a simple ROS master using roscore:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>roscore
+</span></code></pre></div>
+<p>This will start the ROS master on localhost:11311 by default.</p>
+<h2 id="limitations">⚠️ Limitations<a class="headerlink" href="#limitations" title="Permanent link">&para;</a></h2>
+<p>The current bridging implementation:</p>
+<ol>
+<li>Only supports ROS1 master discovery</li>
+<li>Does not support message translation between Python ROS engine and native ROS</li>
+<li>Does not support parameter synchronization</li>
+<li>Does not support service request/response translation</li>
+</ol>
+<p>Future versions will expand these capabilities to provide full interoperability with native ROS systems.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../launch/" class="btn btn-neutral float-left" title="Launch System"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../examples/" class="btn btn-neutral float-right" title="Examples">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../launch/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../examples/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,2 @@
+# Prevent GitHub from suggesting gh-pages branch in PRs
+gh-pages branch linguist-detectable=false

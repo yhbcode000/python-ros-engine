@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Python ROS Engine Team" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Contributing - Python ROS Engine</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../custom.css" rel="stylesheet" />
+  
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Contributing";
+        var mkdocs_page_input_path = "contributing.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script>
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({startOnLoad: true});
+  </script>
+ 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Python ROS Engine
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../installation/">Installation</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../usage/">Usage Guide</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../api/">API Documentation</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../launch/">Launch System</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../bridging/">Bridging with Native ROS</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../examples/">Examples</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Contributing</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#table-of-contents">📋 Table of Contents</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#code-of-conduct">🎯 Code of Conduct</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#getting-started">🚀 Getting Started</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#how-to-contribute">💡 How to Contribute</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#development-setup">⚙️ Development Setup</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#coding-standards">💻 Coding Standards</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#testing">🧪 Testing</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#documentation">📖 Documentation</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#pull-request-process">🔄 Pull Request Process</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#reporting-bugs">🐛 Reporting Bugs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#requesting-features">✨ Requesting Features</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../license/">License</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Python ROS Engine</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Contributing</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="contributing-to-python-ros-engine">🤝 Contributing to Python ROS Engine<a class="headerlink" href="#contributing-to-python-ros-engine" title="Permanent link">&para;</a></h1>
+<p>Thank you for your interest in contributing to the Python ROS Engine! We welcome contributions from the community to help improve this pure Python implementation of ROS2 functionality.</p>
+<h2 id="table-of-contents">📋 Table of Contents<a class="headerlink" href="#table-of-contents" title="Permanent link">&para;</a></h2>
+<ol>
+<li><a href="#code-of-conduct">Code of Conduct</a></li>
+<li><a href="#getting-started">🚀 Getting Started</a></li>
+<li><a href="#how-to-contribute">💡 How to Contribute</a></li>
+<li><a href="#development-setup">⚙️ Development Setup</a></li>
+<li><a href="#coding-standards">💻 Coding Standards</a></li>
+<li><a href="#testing">🧪 Testing</a></li>
+<li><a href="#documentation">📖 Documentation</a></li>
+<li><a href="#pull-request-process">🔄 Pull Request Process</a></li>
+<li><a href="#reporting-bugs">🐛 Reporting Bugs</a></li>
+<li><a href="#requesting-features">✨ Requesting Features</a></li>
+</ol>
+<h2 id="code-of-conduct">🎯 Code of Conduct<a class="headerlink" href="#code-of-conduct" title="Permanent link">&para;</a></h2>
+<p>This project adheres to a Code of Conduct adapted from the <a href="https://www.contributor-covenant.org/">Contributor Covenant</a>. By participating, you are expected to uphold this code. Please report unacceptable behavior to pyros@example.com.</p>
+<h2 id="getting-started">🚀 Getting Started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Fork the repository on GitHub</li>
+<li>Clone your fork locally</li>
+<li>Set up the development environment (see <a href="#development-setup">Development Setup</a>)</li>
+</ol>
+<h2 id="how-to-contribute">💡 How to Contribute<a class="headerlink" href="#how-to-contribute" title="Permanent link">&para;</a></h2>
+<p>There are several ways you can contribute to this project:</p>
+<ul>
+<li>Report bugs and issues</li>
+<li>Suggest new features</li>
+<li>Improve documentation</li>
+<li>Write code to implement new features or fix bugs</li>
+<li>Review pull requests from other contributors</li>
+</ul>
+<h2 id="development-setup">⚙️ Development Setup<a class="headerlink" href="#development-setup" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Ensure you have Python 3.8 or higher installed</li>
+<li>Create a virtual environment:
+   <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>venv
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">source</span><span class="w"> </span>venv/bin/activate<span class="w">  </span><span class="c1"># On Windows: venv\Scripts\activate</span>
+</span></code></pre></div></li>
+<li>Install the package in development mode:
+   <div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.
+</span></code></pre></div></li>
+<li>Install test dependencies:
+   <div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.<span class="o">[</span>test<span class="o">]</span>
+</span></code></pre></div></li>
+</ol>
+<h2 id="coding-standards">💻 Coding Standards<a class="headerlink" href="#coding-standards" title="Permanent link">&para;</a></h2>
+<p>We follow the PEP 8 style guide for Python code. Additionally:</p>
+<ul>
+<li>Use type hints for all function parameters and return values</li>
+<li>Write docstrings for all public classes and methods using the Google Python Style Guide</li>
+<li>Keep functions and classes focused on a single responsibility</li>
+<li>Use dataclasses for message types when possible</li>
+<li>Ensure code is readable and well-commented where necessary</li>
+</ul>
+<h2 id="testing">🧪 Testing<a class="headerlink" href="#testing" title="Permanent link">&para;</a></h2>
+<p>All contributions must include appropriate tests. We use pytest for testing.</p>
+<p>To run all tests:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>python<span class="w"> </span>-m<span class="w"> </span>pytest<span class="w"> </span>tests/<span class="w"> </span>-v
+</span></code></pre></div></p>
+<p>To run tests with coverage:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>pip<span class="w"> </span>install<span class="w"> </span>pytest-cov
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>python<span class="w"> </span>-m<span class="w"> </span>pytest<span class="w"> </span>tests/<span class="w"> </span>--cov<span class="o">=</span>src/<span class="w"> </span>--cov-report<span class="o">=</span>html
+</span></code></pre></div></p>
+<h2 id="documentation">📖 Documentation<a class="headerlink" href="#documentation" title="Permanent link">&para;</a></h2>
+<p>We maintain documentation in the <code>docs/</code> directory. When adding new features or modifying existing functionality, please update the relevant documentation files.</p>
+<ul>
+<li>API documentation: <code>docs/api.md</code></li>
+<li>Usage guide: <code>docs/usage.md</code></li>
+<li>Bridging documentation: <code>docs/bridging.md</code></li>
+</ul>
+<p>Documentation can be built and served locally using the <code>build_docs.py</code> script. See <a href="../project_structure.md">project_structure.md</a> for details on how to use this script.</p>
+<h2 id="pull-request-process">🔄 Pull Request Process<a class="headerlink" href="#pull-request-process" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Ensure any install or build dependencies are removed before the end of the layer when doing a build</li>
+<li>Update the README.md and documentation files with details of changes to the interface, including new environment variables, exposed ports, useful file locations, and container parameters</li>
+<li>Increase the version numbers in any examples files and the README.md to the new version that this Pull Request would represent. The versioning scheme we use is <a href="https://semver.org/">SemVer</a></li>
+<li>Your Pull Request will be reviewed by maintainers, who may request changes</li>
+<li>Once approved, your Pull Request will be merged</li>
+</ol>
+<h2 id="reporting-bugs">🐛 Reporting Bugs<a class="headerlink" href="#reporting-bugs" title="Permanent link">&para;</a></h2>
+<p>Please use the GitHub issue tracker to report bugs. When filing an issue, please include:</p>
+<ul>
+<li>A clear and descriptive title</li>
+<li>Steps to reproduce the bug</li>
+<li>Expected behavior</li>
+<li>Actual behavior</li>
+<li>Any relevant error messages or logs</li>
+<li>Information about your environment (Python version, OS, etc.)</li>
+</ul>
+<h2 id="requesting-features">✨ Requesting Features<a class="headerlink" href="#requesting-features" title="Permanent link">&para;</a></h2>
+<p>We welcome feature requests! Please use the GitHub issue tracker and include:</p>
+<ul>
+<li>A clear and descriptive title</li>
+<li>A detailed description of the proposed feature</li>
+<li>The motivation for the feature</li>
+<li>How the feature would be used</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../examples/" class="btn btn-neutral float-left" title="Examples"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../license/" class="btn btn-neutral float-right" title="License">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../examples/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../license/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

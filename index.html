@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="description" content="A pure Python implementation of ROS2 functionality with bridging capabilities" /><meta name="author" content="Python ROS Engine Team" />
+      <link rel="shortcut icon" href="img/favicon.ico" />
+    <title>Python ROS Engine</title>
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="custom.css" rel="stylesheet" />
+  
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Home";
+        var mkdocs_page_input_path = "index.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script>
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({startOnLoad: true});
+  </script>
+ 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="." class="icon icon-home"> Python ROS Engine
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Home</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#features">✨ Features</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#project-structure">📁 Project Structure</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#message-types">📨 Message Types</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#primitive-types">Primitive Types</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#multi-dimensional-array-types">Multi-dimensional Array Types</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#getting-started">🚀 Getting Started</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#documentation">📚 Documentation</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#examples">🧪 Examples</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#contributing">🤝 Contributing</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#license">📄 License</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="installation/">Installation</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="usage/">Usage Guide</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="api/">API Documentation</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="launch/">Launch System</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="bridging/">Bridging with Native ROS</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="examples/">Examples</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="contributing/">Contributing</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="license/">License</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href=".">Python ROS Engine</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Home</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="python-ros-engine">🚀 Python ROS Engine<a class="headerlink" href="#python-ros-engine" title="Permanent link">&para;</a></h1>
+<p>A pure Python implementation of ROS2 core functionality with bridging capabilities to interact with native ROS nodes.</p>
+<p><a href="https://badge.fury.io/py/python-ros-engine"><img alt="PyPI version" src="https://badge.fury.io/py/python-ros-engine.svg" /></a>
+<a href="https://pypi.org/project/python-ros-engine/"><img alt="PyPI version" src="https://img.shields.io/pypi/v/python-ros-engine.svg" /></a>
+<a href="https://opensource.org/licenses/Apache-2.0"><img alt="License" src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" /></a>
+<a href="https://pypi.org/project/python-ros-engine/"><img alt="Python Versions" src="https://img.shields.io/pypi/pyversions/python-ros-engine.svg" /></a>
+<a href="https://yhbcode000.github.io/python-ros-engine/"><img alt="GitHub Pages" src="https://img.shields.io/badge/docs-GitHub%20Pages-blue" /></a></p>
+<h2 id="features">✨ Features<a class="headerlink" href="#features" title="Permanent link">&para;</a></h2>
+<ul>
+<li>🔄 Node creation and lifecycle management</li>
+<li>📢 Publisher and subscriber patterns with Quality of Service (QoS) profiles</li>
+<li>🤝 Service and client communication</li>
+<li>⚙️ Parameter handling with callbacks</li>
+<li>🔍 Topic and service discovery</li>
+<li>⏱️ Timer functionality</li>
+<li>🌉 ROS1 bridging capabilities for node/topic/service discovery</li>
+<li>📨 Message translation between Python ROS engine and native ROS</li>
+<li>🛠️ Configuration with Hydra best practices</li>
+<li>🚦 Launch system for managing multiple nodes</li>
+<li>📊 System status reporting for nodes, topics, and services</li>
+</ul>
+<h2 id="project-structure">📁 Project Structure<a class="headerlink" href="#project-structure" title="Permanent link">&para;</a></h2>
+<pre class="mermaid">
+graph TD
+    A[Python ROS Engine] --> B[Core Functionality]
+    A --> C[Bridging Capabilities]
+    A --> D[Launch System]
+    B --> B1[Node Management]
+    B --> B2[Publishers/Subscribers]
+    B --> B3[Services/Clients]
+    B --> B4[Parameters]
+    B --> B5[Timers]
+    C --> C1[ROS1 Bridge]
+    C --> C2[Message Translation]
+    D --> D1[Launch Description]
+    D --> D2[System Status]
+</pre>
+
+<h2 id="message-types">📨 Message Types<a class="headerlink" href="#message-types" title="Permanent link">&para;</a></h2>
+<p>The Python ROS Engine supports a wide range of message types:</p>
+<h3 id="primitive-types">Primitive Types<a class="headerlink" href="#primitive-types" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>Bool</code>: Boolean values</li>
+<li><code>String</code>: String values</li>
+<li><code>Int8</code>, <code>Int16</code>, <code>Int32</code>, <code>Int64</code>: Signed integer values</li>
+<li><code>UInt8</code>, <code>UInt16</code>, <code>UInt32</code>, <code>UInt64</code>: Unsigned integer values</li>
+<li><code>Float32</code>, <code>Float64</code>: Floating point values</li>
+<li><code>Empty</code>: Empty messages</li>
+<li><code>Time</code>: Time values</li>
+<li><code>Duration</code>: Duration values</li>
+</ul>
+<h3 id="multi-dimensional-array-types">Multi-dimensional Array Types<a class="headerlink" href="#multi-dimensional-array-types" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>ByteMultiArray</code>: Multi-array of bytes</li>
+<li><code>Int8MultiArray</code>, <code>Int16MultiArray</code>, <code>Int32MultiArray</code>, <code>Int64MultiArray</code>: Multi-arrays of integer values</li>
+<li><code>UInt8MultiArray</code>, <code>UInt16MultiArray</code>, <code>UInt32MultiArray</code>, <code>UInt64MultiArray</code>: Multi-arrays of unsigned integer values</li>
+<li><code>Float32MultiArray</code>, <code>Float64MultiArray</code>: Multi-arrays of floating point values</li>
+</ul>
+<h2 id="getting-started">🚀 Getting Started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h2>
+<p>To get started with the Python ROS Engine, check out our <a href="installation/">Installation Guide</a> and <a href="usage/">Usage Guide</a>.</p>
+<h2 id="documentation">📚 Documentation<a class="headerlink" href="#documentation" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="api/">API Documentation</a> - Detailed information about all classes and methods</li>
+<li><a href="bridging/">Bridging with Native ROS</a> - Information about interacting with native ROS systems</li>
+<li><a href="launch/">Launch System</a> - Information about the launch system for managing multiple nodes</li>
+<li><a href="usage/">Usage Guide</a> - Comprehensive guide on how to use the engine</li>
+</ul>
+<h2 id="examples">🧪 Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h2>
+<p>See our <a href="examples/">Examples</a> page for complete working examples demonstrating various features of the Python ROS Engine.</p>
+<p>We've also included a <a href="examples/#complete-example-project">Complete Example Project</a> that shows how to build a robot system with multiple interconnected nodes using best practices.</p>
+<h2 id="contributing">🤝 Contributing<a class="headerlink" href="#contributing" title="Permanent link">&para;</a></h2>
+<p>We welcome contributions! Please see our <a href="contributing/">Contributing Guide</a> for details on how to contribute to this project.</p>
+<h2 id="license">📄 License<a class="headerlink" href="#license" title="Permanent link">&para;</a></h2>
+<p>This project is licensed under the Apache License 2.0 - see the <a href="license/">License</a> file for details.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="installation/" class="btn btn-neutral float-right" title="Installation">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+      <span><a href="installation/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = ".";</script>
+    <script src="js/theme_extra.js"></script>
+    <script src="js/theme.js"></script>
+      <script src="search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
+
+<!--
+MkDocs version : 1.6.1
+Build Date UTC : 2025-09-21 21:13:41.572687+00:00
+-->

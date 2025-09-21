@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Python ROS Engine Team" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Launch System - Python ROS Engine</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../custom.css" rel="stylesheet" />
+  
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Launch System";
+        var mkdocs_page_input_path = "launch.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script>
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({startOnLoad: true});
+  </script>
+ 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Python ROS Engine
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../installation/">Installation</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../usage/">Usage Guide</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../api/">API Documentation</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Launch System</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#launchsystem-class">⚙️ LaunchSystem Class</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#methods">Methods</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#__init__">__init__()</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#add_nodenode_name-node_class-args-kwargs">add_node(node_name, node_class, *args, **kwargs)</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#add_node_from_filenode_name-file_path-class_name-args-kwargs">add_node_from_file(node_name, file_path, class_name, *args, **kwargs)</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#remove_nodenode_name">remove_node(node_name)</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#start">start()</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#shutdown">shutdown()</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#get_system_status">get_system_status()</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#print_system_status">print_system_status()</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#launchdescription-class">📄 LaunchDescription Class</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#methods_1">Methods</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#__init__launch_systemnone">__init__(launch_system=None)</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#add_nodenode_class-args-kwargs">add_node(node_class, *args, **kwargs)</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#add_node_from_filefile_path-class_name-args-kwargs">add_node_from_file(file_path, class_name, *args, **kwargs)</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#execute">execute()</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#usage-examples">🧪 Usage Examples</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#programmatic-usage">💻 Programmatic Usage</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#declarative-usage">💻 Declarative Usage</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#launch-file-usage">💻 Launch File Usage</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../bridging/">Bridging with Native ROS</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../examples/">Examples</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../contributing/">Contributing</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../license/">License</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Python ROS Engine</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Launch System</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="launch-system">🚀 Launch System<a class="headerlink" href="#launch-system" title="Permanent link">&para;</a></h1>
+<p>The launch system in Python ROS Engine provides a way to manage multiple nodes and monitor the overall system status. It allows you to start, stop, and monitor collections of nodes as a single unit.</p>
+<h2 id="launchsystem-class">⚙️ LaunchSystem Class<a class="headerlink" href="#launchsystem-class" title="Permanent link">&para;</a></h2>
+<p>The <code>LaunchSystem</code> class is the main interface for managing multiple nodes.</p>
+<h3 id="methods">Methods<a class="headerlink" href="#methods" title="Permanent link">&para;</a></h3>
+<h4 id="__init__"><code>__init__()</code><a class="headerlink" href="#__init__" title="Permanent link">&para;</a></h4>
+<p>Initialize the launch system.</p>
+<h4 id="add_nodenode_name-node_class-args-kwargs"><code>add_node(node_name, node_class, *args, **kwargs)</code><a class="headerlink" href="#add_nodenode_name-node_class-args-kwargs" title="Permanent link">&para;</a></h4>
+<p>Add a node to the launch system.</p>
+<ul>
+<li><code>node_name</code>: Name to register the node under</li>
+<li><code>node_class</code>: The node class to instantiate</li>
+<li><code>*args</code>: Positional arguments for node initialization</li>
+<li><code>**kwargs</code>: Keyword arguments for node initialization</li>
+</ul>
+<h4 id="add_node_from_filenode_name-file_path-class_name-args-kwargs"><code>add_node_from_file(node_name, file_path, class_name, *args, **kwargs)</code><a class="headerlink" href="#add_node_from_filenode_name-file_path-class_name-args-kwargs" title="Permanent link">&para;</a></h4>
+<p>Add a node to the launch system from a Python file.</p>
+<ul>
+<li><code>node_name</code>: Name to register the node under</li>
+<li><code>file_path</code>: Path to the Python file containing the node class</li>
+<li><code>class_name</code>: Name of the node class in the file</li>
+<li><code>*args</code>: Positional arguments for node initialization</li>
+<li><code>**kwargs</code>: Keyword arguments for node initialization</li>
+</ul>
+<h4 id="remove_nodenode_name"><code>remove_node(node_name)</code><a class="headerlink" href="#remove_nodenode_name" title="Permanent link">&para;</a></h4>
+<p>Remove a node from the launch system.</p>
+<ul>
+<li><code>node_name</code>: Name of the node to remove</li>
+</ul>
+<h4 id="start"><code>start()</code><a class="headerlink" href="#start" title="Permanent link">&para;</a></h4>
+<p>Start all nodes in the launch system.</p>
+<h4 id="shutdown"><code>shutdown()</code><a class="headerlink" href="#shutdown" title="Permanent link">&para;</a></h4>
+<p>Shutdown all nodes in the launch system.</p>
+<h4 id="get_system_status"><code>get_system_status()</code><a class="headerlink" href="#get_system_status" title="Permanent link">&para;</a></h4>
+<p>Get the status of the entire system as a dictionary.</p>
+<h4 id="print_system_status"><code>print_system_status()</code><a class="headerlink" href="#print_system_status" title="Permanent link">&para;</a></h4>
+<p>Print the status of the entire system in a human-readable format.</p>
+<h2 id="launchdescription-class">📄 LaunchDescription Class<a class="headerlink" href="#launchdescription-class" title="Permanent link">&para;</a></h2>
+<p>The <code>LaunchDescription</code> class provides a declarative way to describe a launch configuration.</p>
+<h3 id="methods_1">Methods<a class="headerlink" href="#methods_1" title="Permanent link">&para;</a></h3>
+<h4 id="__init__launch_systemnone"><code>__init__(launch_system=None)</code><a class="headerlink" href="#__init__launch_systemnone" title="Permanent link">&para;</a></h4>
+<p>Initialize a launch description.</p>
+<ul>
+<li><code>launch_system</code>: Optional LaunchSystem to use (creates a new one if not provided)</li>
+</ul>
+<h4 id="add_nodenode_class-args-kwargs"><code>add_node(node_class, *args, **kwargs)</code><a class="headerlink" href="#add_nodenode_class-args-kwargs" title="Permanent link">&para;</a></h4>
+<p>Add a node action to the launch description.</p>
+<ul>
+<li><code>node_class</code>: The node class to instantiate</li>
+<li><code>*args</code>: Positional arguments for node initialization</li>
+<li><code>**kwargs</code>: Keyword arguments for node initialization</li>
+</ul>
+<h4 id="add_node_from_filefile_path-class_name-args-kwargs"><code>add_node_from_file(file_path, class_name, *args, **kwargs)</code><a class="headerlink" href="#add_node_from_filefile_path-class_name-args-kwargs" title="Permanent link">&para;</a></h4>
+<p>Add a node action from a Python file to the launch description.</p>
+<ul>
+<li><code>file_path</code>: Path to the Python file containing the node class</li>
+<li><code>class_name</code>: Name of the node class in the file</li>
+<li><code>*args</code>: Positional arguments for node initialization</li>
+<li><code>**kwargs</code>: Keyword arguments for node initialization</li>
+</ul>
+<h4 id="execute"><code>execute()</code><a class="headerlink" href="#execute" title="Permanent link">&para;</a></h4>
+<p>Execute all actions in the launch description and return the launch system.</p>
+<h2 id="usage-examples">🧪 Usage Examples<a class="headerlink" href="#usage-examples" title="Permanent link">&para;</a></h2>
+<h3 id="programmatic-usage">💻 Programmatic Usage<a class="headerlink" href="#programmatic-usage" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pyros2</span><span class="w"> </span><span class="kn">import</span> <span class="n">LaunchSystem</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pyros2.message</span><span class="w"> </span><span class="kn">import</span> <span class="n">String</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="k">class</span><span class="w"> </span><span class="nc">MyPublisherNode</span><span class="p">:</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>        <span class="kn">from</span><span class="w"> </span><span class="nn">pyros2</span><span class="w"> </span><span class="kn">import</span> <span class="n">Node</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">node</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="s2">&quot;my_publisher&quot;</span><span class="p">)</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">publisher</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">node</span><span class="o">.</span><span class="n">create_publisher</span><span class="p">(</span><span class="n">String</span><span class="p">,</span> <span class="s2">&quot;/my_topic&quot;</span><span class="p">)</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">publish_message</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>        <span class="n">msg</span> <span class="o">=</span> <span class="n">String</span><span class="p">()</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>        <span class="n">msg</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="s2">&quot;Hello World!&quot;</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">publisher</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="c1"># Create launch system</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="n">launch_system</span> <span class="o">=</span> <span class="n">LaunchSystem</span><span class="p">()</span>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="c1"># Add nodes</span>
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="n">launch_system</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">&quot;publisher&quot;</span><span class="p">,</span> <span class="n">MyPublisherNode</span><span class="p">)</span>
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="c1"># Print system status</span>
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="n">launch_system</span><span class="o">.</span><span class="n">print_system_status</span><span class="p">()</span>
+</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>
+</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="c1"># Start the system</span>
+</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="n">launch_system</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+</span></code></pre></div>
+<h3 id="declarative-usage">💻 Declarative Usage<a class="headerlink" href="#declarative-usage" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pyros2</span><span class="w"> </span><span class="kn">import</span> <span class="n">LaunchDescription</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pyros2.message</span><span class="w"> </span><span class="kn">import</span> <span class="n">String</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="k">class</span><span class="w"> </span><span class="nc">MyPublisherNode</span><span class="p">:</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>        <span class="kn">from</span><span class="w"> </span><span class="nn">pyros2</span><span class="w"> </span><span class="kn">import</span> <span class="n">Node</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">node</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="s2">&quot;my_publisher&quot;</span><span class="p">)</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">publisher</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">node</span><span class="o">.</span><span class="n">create_publisher</span><span class="p">(</span><span class="n">String</span><span class="p">,</span> <span class="s2">&quot;/my_topic&quot;</span><span class="p">)</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="k">class</span><span class="w"> </span><span class="nc">MySubscriberNode</span><span class="p">:</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>        <span class="kn">from</span><span class="w"> </span><span class="nn">pyros2</span><span class="w"> </span><span class="kn">import</span> <span class="n">Node</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">node</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="s2">&quot;my_subscriber&quot;</span><span class="p">)</span>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">subscriber</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">node</span><span class="o">.</span><span class="n">create_subscription</span><span class="p">(</span>
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>            <span class="n">String</span><span class="p">,</span> <span class="s2">&quot;/my_topic&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">callback</span>
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>        <span class="p">)</span>
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>
+</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">callback</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
+</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Received: </span><span class="si">{</span><span class="n">msg</span><span class="o">.</span><span class="n">data</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>
+</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="c1"># Create launch description</span>
+</span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="n">launch_description</span> <span class="o">=</span> <span class="n">LaunchDescription</span><span class="p">()</span>
+</span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a>
+</span><span id="__span-1-24"><a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="c1"># Add nodes</span>
+</span><span id="__span-1-25"><a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="n">launch_description</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">MyPublisherNode</span><span class="p">)</span>
+</span><span id="__span-1-26"><a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="n">launch_description</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">MySubscriberNode</span><span class="p">)</span>
+</span><span id="__span-1-27"><a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a>
+</span><span id="__span-1-28"><a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a><span class="c1"># Execute the launch description</span>
+</span><span id="__span-1-29"><a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a><span class="n">launch_system</span> <span class="o">=</span> <span class="n">launch_description</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
+</span><span id="__span-1-30"><a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a>
+</span><span id="__span-1-31"><a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a><span class="c1"># Print system status</span>
+</span><span id="__span-1-32"><a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a><span class="n">launch_system</span><span class="o">.</span><span class="n">print_system_status</span><span class="p">()</span>
+</span><span id="__span-1-33"><a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a>
+</span><span id="__span-1-34"><a id="__codelineno-1-34" name="__codelineno-1-34" href="#__codelineno-1-34"></a><span class="c1"># Start the system</span>
+</span><span id="__span-1-35"><a id="__codelineno-1-35" name="__codelineno-1-35" href="#__codelineno-1-35"></a><span class="n">launch_system</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+</span></code></pre></div>
+<h3 id="launch-file-usage">💻 Launch File Usage<a class="headerlink" href="#launch-file-usage" title="Permanent link">&para;</a></h3>
+<p>You can also create launch files that can be executed from the command line:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># launch_my_system.py</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pyros2</span><span class="w"> </span><span class="kn">import</span> <span class="n">LaunchDescription</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">my_nodes</span><span class="w"> </span><span class="kn">import</span> <span class="n">MyPublisherNode</span><span class="p">,</span> <span class="n">MySubscriberNode</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="k">def</span><span class="w"> </span><span class="nf">generate_launch_description</span><span class="p">():</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    <span class="n">launch_description</span> <span class="o">=</span> <span class="n">LaunchDescription</span><span class="p">()</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>    <span class="c1"># Add nodes</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>    <span class="n">launch_description</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">MyPublisherNode</span><span class="p">)</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>    <span class="n">launch_description</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">MySubscriberNode</span><span class="p">)</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>    <span class="k">return</span> <span class="n">launch_description</span>
+</span></code></pre></div>
+<p>Then run it from the command line:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>python<span class="w"> </span>-m<span class="w"> </span>pyros2.launch_cli<span class="w"> </span>launch_my_system.py
+</span></code></pre></div></p>
+<p>To just check the system status without starting the nodes:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>python<span class="w"> </span>-m<span class="w"> </span>pyros2.launch_cli<span class="w"> </span>launch_my_system.py<span class="w"> </span>--status
+</span></code></pre></div></p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../api/" class="btn btn-neutral float-left" title="API Documentation"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../bridging/" class="btn btn-neutral float-right" title="Bridging with Native ROS">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../api/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../bridging/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,1200 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Python ROS Engine Team" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>API Documentation - Python ROS Engine</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../custom.css" rel="stylesheet" />
+  
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "API Documentation";
+        var mkdocs_page_input_path = "api.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script>
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({startOnLoad: true});
+  </script>
+ 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Python ROS Engine
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../installation/">Installation</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../usage/">Usage Guide</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">API Documentation</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#message-flow">🔄 Message Flow</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#node-class">🌀 Node Class</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#constructor">Constructor</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#methods">Methods</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#create_publisher">create_publisher</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#create_subscription">create_subscription</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#create_service">create_service</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#create_client">create_client</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#create_timer">create_timer</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#declare_parameter">declare_parameter</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#get_parameter">get_parameter</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#set_parameter">set_parameter</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#add_on_set_parameters_callback">add_on_set_parameters_callback</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#get_topic_names_and_types">get_topic_names_and_types</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#get_service_names_and_types">get_service_names_and_types</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#get_publishers_info_by_topic">get_publishers_info_by_topic</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#get_subscriptions_info_by_topic">get_subscriptions_info_by_topic</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#spin">spin</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#spin_once">spin_once</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#destroy_node">destroy_node</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#message-classes">📨 Message Classes</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#message">Message</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#serialize">serialize</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#deserialize">deserialize</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#string">String</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#fields">Fields</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#int8">Int8</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#fields_1">Fields</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#int16">Int16</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#fields_2">Fields</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#int32">Int32</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#fields_3">Fields</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#int64">Int64</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#fields_4">Fields</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#uint8">UInt8</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#fields_5">Fields</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#uint16">UInt16</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#fields_6">Fields</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#uint32">UInt32</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#fields_7">Fields</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#uint64">UInt64</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#fields_8">Fields</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#float32">Float32</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#fields_9">Fields</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#float64">Float64</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#fields_10">Fields</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#bool">Bool</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#fields_11">Fields</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#empty">Empty</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#fields_12">Fields</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#time">Time</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#fields_13">Fields</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#duration">Duration</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#fields_14">Fields</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#multiarraydimension">MultiArrayDimension</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#fields_15">Fields</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#multiarraylayout">MultiArrayLayout</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#fields_16">Fields</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#bytemultiarray">ByteMultiArray</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#fields_17">Fields</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#int8multiarray">Int8MultiArray</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#fields_18">Fields</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#int16multiarray">Int16MultiArray</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#fields_19">Fields</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#int32multiarray">Int32MultiArray</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#fields_20">Fields</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#int64multiarray">Int64MultiArray</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#fields_21">Fields</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#uint8multiarray">UInt8MultiArray</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#fields_22">Fields</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#uint16multiarray">UInt16MultiArray</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#fields_23">Fields</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#uint32multiarray">UInt32MultiArray</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#fields_24">Fields</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#uint64multiarray">UInt64MultiArray</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#fields_25">Fields</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#float32multiarray">Float32MultiArray</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#fields_26">Fields</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#float64multiarray">Float64MultiArray</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#fields_27">Fields</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#qos-classes">📋 QoS Classes</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#reliabilitypolicy">ReliabilityPolicy</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#durabilitypolicy">DurabilityPolicy</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#qosprofile">QoSProfile</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#constructor_1">Constructor</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#fields_28">Fields</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#publisher-class">📢 Publisher Class</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#constructor_2">Constructor</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#methods_1">Methods</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#publish">publish</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#subscriber-class">📡 Subscriber Class</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#constructor_3">Constructor</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#service-class">🤝 Service Class</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#constructor_4">Constructor</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#client-class">📞 Client Class</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#constructor_5">Constructor</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#methods_2">Methods</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#call">call</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#call_async">call_async</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#discovery-class">🔍 Discovery Class</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#methods_3">Methods</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#get_all_topics">get_all_topics</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#get_all_services">get_all_services</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#get_topic_types">get_topic_types</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#get_service_types">get_service_types</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#get_nodes">get_nodes</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#bridge-class">🌉 Bridge Class</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#constructor_6">Constructor</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#methods_4">Methods</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#connect">connect</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#discover_ros_nodes">discover_ros_nodes</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#discover_ros_topics">discover_ros_topics</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#discover_ros_services">discover_ros_services</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#messagetranslator-class">🔄 MessageTranslator Class</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#methods_5">Methods</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#pyros_to_ros">pyros_to_ros</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#ros_to_pyros">ros_to_pyros</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#get_pyros_type">get_pyros_type</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#get_ros_type">get_ros_type</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#launchsystem-class">🚀 LaunchSystem Class</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#constructor_7">Constructor</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#methods_6">Methods</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#add_node">add_node</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#add_node_from_file">add_node_from_file</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#remove_node">remove_node</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#start">start</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#shutdown">shutdown</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#get_system_status">get_system_status</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#print_system_status">print_system_status</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#launchdescription-class">📄 LaunchDescription Class</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#constructor_8">Constructor</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#methods_7">Methods</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#add_node_1">add_node</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#add_node_from_file_1">add_node_from_file</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#execute">execute</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../launch/">Launch System</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../bridging/">Bridging with Native ROS</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../examples/">Examples</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../contributing/">Contributing</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../license/">License</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Python ROS Engine</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">API Documentation</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="api-documentation">📚 API Documentation<a class="headerlink" href="#api-documentation" title="Permanent link">&para;</a></h1>
+<h2 id="message-flow">🔄 Message Flow<a class="headerlink" href="#message-flow" title="Permanent link">&para;</a></h2>
+<p>The Python ROS Engine follows a message flow pattern similar to ROS2:</p>
+<pre class="mermaid">
+graph LR
+    A[Node] -- create_publisher --> B[Publisher]
+    A -- create_subscription --> C[Subscriber]
+    A -- create_service --> D[Service]
+    A -- create_client --> E[Client]
+    B -- publish --> F[(Topic)]
+    F -- subscribe --> C
+    E -- call --> G[(Service)]
+    G -- handle --> D
+</pre>
+
+<p>Here's a sequence diagram showing the complete message flow from publisher to subscriber:</p>
+<pre class="mermaid">
+sequenceDiagram
+    participant Node1
+    participant Publisher
+    participant Topic
+    participant Subscriber
+    participant Node2
+    Node1->>Publisher: create_publisher()
+    Node2->>Subscriber: create_subscription()
+    Publisher->>Topic: publish(message)
+    Topic->>Subscriber: deliver(message)
+    Subscriber->>Node2: callback(message)
+</pre>
+
+<p>And here's a sequence diagram for the service/client request-response flow:</p>
+<pre class="mermaid">
+sequenceDiagram
+    participant ClientNode
+    participant Client
+    participant Service
+    participant ServiceNode
+    ClientNode->>Client: create_client()
+    ServiceNode->>Service: create_service()
+    Client->>Service: call(request)
+    Service->>ServiceNode: callback(request)
+    ServiceNode->>Service: return(response)
+    Service->>Client: return(response)
+    Client->>ClientNode: return(response)
+</pre>
+
+<h2 id="node-class">🌀 Node Class<a class="headerlink" href="#node-class" title="Permanent link">&para;</a></h2>
+<p>The <code>Node</code> class is the base class for all ROS nodes.</p>
+<h3 id="constructor">Constructor<a class="headerlink" href="#constructor" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">Node</span><span class="p">(</span><span class="n">node_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">namespace</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;/&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+<ul>
+<li><code>node_name</code>: Name of the node</li>
+<li><code>namespace</code>: Namespace for the node (default: "/")</li>
+</ul>
+<h3 id="methods">Methods<a class="headerlink" href="#methods" title="Permanent link">&para;</a></h3>
+<h4 id="create_publisher">create_publisher<a class="headerlink" href="#create_publisher" title="Permanent link">&para;</a></h4>
+<p><div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">create_publisher</span><span class="p">(</span><span class="n">msg_type</span><span class="p">:</span> <span class="nb">type</span><span class="p">,</span> <span class="n">topic_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">qos_profile</span><span class="p">:</span> <span class="n">QoSProfile</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span>
+</span></code></pre></div>
+Create a publisher for a topic.</p>
+<ul>
+<li><code>msg_type</code>: The message type class for this publisher</li>
+<li><code>topic_name</code>: The name of the topic to publish to</li>
+<li><code>qos_profile</code>: Quality of Service profile (optional)</li>
+</ul>
+<h4 id="create_subscription">create_subscription<a class="headerlink" href="#create_subscription" title="Permanent link">&para;</a></h4>
+<p><div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">create_subscription</span><span class="p">(</span><span class="n">msg_type</span><span class="p">:</span> <span class="nb">type</span><span class="p">,</span> <span class="n">topic_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">callback</span><span class="p">:</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">qos_profile</span><span class="p">:</span> <span class="n">QoSProfile</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span>
+</span></code></pre></div>
+Create a subscription to a topic.</p>
+<ul>
+<li><code>msg_type</code>: The message type class for this subscription</li>
+<li><code>topic_name</code>: The name of the topic to subscribe to</li>
+<li><code>callback</code>: Function to call when a message is received</li>
+<li><code>qos_profile</code>: Quality of Service profile (optional)</li>
+</ul>
+<h4 id="create_service">create_service<a class="headerlink" href="#create_service" title="Permanent link">&para;</a></h4>
+<p><div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">create_service</span><span class="p">(</span><span class="n">srv_type</span><span class="p">:</span> <span class="nb">type</span><span class="p">,</span> <span class="n">service_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">callback</span><span class="p">:</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">qos_profile</span><span class="p">:</span> <span class="n">QoSProfile</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span>
+</span></code></pre></div>
+Create a service server.</p>
+<ul>
+<li><code>srv_type</code>: The service type class</li>
+<li><code>service_name</code>: The name of the service</li>
+<li><code>callback</code>: Function to call when a service request is received</li>
+<li><code>qos_profile</code>: Quality of Service profile (optional)</li>
+</ul>
+<h4 id="create_client">create_client<a class="headerlink" href="#create_client" title="Permanent link">&para;</a></h4>
+<p><div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">create_client</span><span class="p">(</span><span class="n">srv_type</span><span class="p">:</span> <span class="nb">type</span><span class="p">,</span> <span class="n">service_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">qos_profile</span><span class="p">:</span> <span class="n">QoSProfile</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span>
+</span></code></pre></div>
+Create a service client.</p>
+<ul>
+<li><code>srv_type</code>: The service type class</li>
+<li><code>service_name</code>: The name of the service to call</li>
+<li><code>qos_profile</code>: Quality of Service profile (optional)</li>
+</ul>
+<h4 id="create_timer">create_timer<a class="headerlink" href="#create_timer" title="Permanent link">&para;</a></h4>
+<p><div class="language-python highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">create_timer</span><span class="p">(</span><span class="n">timer_period_sec</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">callback</span><span class="p">:</span> <span class="n">Callable</span><span class="p">)</span>
+</span></code></pre></div>
+Create a timer that calls the callback function periodically.</p>
+<ul>
+<li><code>timer_period_sec</code>: Timer period in seconds</li>
+<li><code>callback</code>: Function to call when timer expires</li>
+</ul>
+<h4 id="declare_parameter">declare_parameter<a class="headerlink" href="#declare_parameter" title="Permanent link">&para;</a></h4>
+<p><div class="language-python highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">declare_parameter</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">default_value</span><span class="p">:</span> <span class="n">Any</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">parameter_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span>
+</span></code></pre></div>
+Declare a parameter with a name and default value.</p>
+<ul>
+<li><code>name</code>: Parameter name</li>
+<li><code>default_value</code>: Default value for the parameter (optional)</li>
+<li><code>parameter_type</code>: Type of the parameter (optional)</li>
+</ul>
+<h4 id="get_parameter">get_parameter<a class="headerlink" href="#get_parameter" title="Permanent link">&para;</a></h4>
+<p><div class="language-python highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">get_parameter</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Parameter</span>
+</span></code></pre></div>
+Get a parameter by name.</p>
+<ul>
+<li><code>name</code>: Parameter name</li>
+<li>Returns: Parameter object</li>
+</ul>
+<h4 id="set_parameter">set_parameter<a class="headerlink" href="#set_parameter" title="Permanent link">&para;</a></h4>
+<p><div class="language-python highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">set_parameter</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span>
+</span></code></pre></div>
+Set a parameter value.</p>
+<ul>
+<li><code>name</code>: Parameter name</li>
+<li><code>value</code>: New value for the parameter</li>
+<li>Returns: True if successful, False otherwise</li>
+</ul>
+<h4 id="add_on_set_parameters_callback">add_on_set_parameters_callback<a class="headerlink" href="#add_on_set_parameters_callback" title="Permanent link">&para;</a></h4>
+<p><div class="language-python highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">add_on_set_parameters_callback</span><span class="p">(</span><span class="n">callback</span><span class="p">:</span> <span class="n">Callable</span><span class="p">)</span>
+</span></code></pre></div>
+Add a callback to be called when parameters are set.</p>
+<ul>
+<li><code>callback</code>: Function to call when parameters are set</li>
+</ul>
+<h4 id="get_topic_names_and_types">get_topic_names_and_types<a class="headerlink" href="#get_topic_names_and_types" title="Permanent link">&para;</a></h4>
+<p><div class="language-python highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">get_topic_names_and_types</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">tuple</span><span class="p">]</span>
+</span></code></pre></div>
+Get list of topics and their types.</p>
+<ul>
+<li>Returns: List of (topic_name, topic_types) tuples</li>
+</ul>
+<h4 id="get_service_names_and_types">get_service_names_and_types<a class="headerlink" href="#get_service_names_and_types" title="Permanent link">&para;</a></h4>
+<p><div class="language-python highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">get_service_names_and_types</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">tuple</span><span class="p">]</span>
+</span></code></pre></div>
+Get list of services and their types.</p>
+<ul>
+<li>Returns: List of (service_name, service_types) tuples</li>
+</ul>
+<h4 id="get_publishers_info_by_topic">get_publishers_info_by_topic<a class="headerlink" href="#get_publishers_info_by_topic" title="Permanent link">&para;</a></h4>
+<p><div class="language-python highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">get_publishers_info_by_topic</span><span class="p">(</span><span class="n">topic_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span>
+</span></code></pre></div>
+Get information about publishers for a topic.</p>
+<ul>
+<li><code>topic_name</code>: Name of the topic</li>
+<li>Returns: List of dictionaries with publisher information</li>
+</ul>
+<h4 id="get_subscriptions_info_by_topic">get_subscriptions_info_by_topic<a class="headerlink" href="#get_subscriptions_info_by_topic" title="Permanent link">&para;</a></h4>
+<p><div class="language-python highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="n">get_subscriptions_info_by_topic</span><span class="p">(</span><span class="n">topic_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span>
+</span></code></pre></div>
+Get information about subscriptions for a topic.</p>
+<ul>
+<li><code>topic_name</code>: Name of the topic</li>
+<li>Returns: List of dictionaries with subscription information</li>
+</ul>
+<h4 id="spin">spin<a class="headerlink" href="#spin" title="Permanent link">&para;</a></h4>
+<p><div class="language-python highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="n">spin</span><span class="p">()</span>
+</span></code></pre></div>
+Spin the node to process callbacks.</p>
+<p>This function blocks until the node is destroyed.</p>
+<h4 id="spin_once">spin_once<a class="headerlink" href="#spin_once" title="Permanent link">&para;</a></h4>
+<p><div class="language-python highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="n">spin_once</span><span class="p">(</span><span class="n">timeout_sec</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">)</span>
+</span></code></pre></div>
+Process one callback and return.</p>
+<ul>
+<li><code>timeout_sec</code>: Time to wait for a callback (default: 0.1)</li>
+</ul>
+<h4 id="destroy_node">destroy_node<a class="headerlink" href="#destroy_node" title="Permanent link">&para;</a></h4>
+<p><div class="language-python highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="n">destroy_node</span><span class="p">()</span>
+</span></code></pre></div>
+Destroy the node and clean up resources.</p>
+<h2 id="message-classes">📨 Message Classes<a class="headerlink" href="#message-classes" title="Permanent link">&para;</a></h2>
+<h3 id="message">Message<a class="headerlink" href="#message" title="Permanent link">&para;</a></h3>
+<p>Base class for all ROS messages.</p>
+<h4 id="serialize">serialize<a class="headerlink" href="#serialize" title="Permanent link">&para;</a></h4>
+<p><div class="language-python highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="n">serialize</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">bytes</span>
+</span></code></pre></div>
+Serialize the message to bytes.</p>
+<ul>
+<li>Returns: Serialized message as bytes</li>
+</ul>
+<h4 id="deserialize">deserialize<a class="headerlink" href="#deserialize" title="Permanent link">&para;</a></h4>
+<p><div class="language-python highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="n">deserialize</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">)</span>
+</span></code></pre></div>
+Deserialize bytes to a message instance.</p>
+<ul>
+<li><code>data</code>: Serialized message data as bytes</li>
+</ul>
+<h3 id="string">String<a class="headerlink" href="#string" title="Permanent link">&para;</a></h3>
+<p>String message type.</p>
+<h4 id="fields">Fields<a class="headerlink" href="#fields" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>data</code>: str - String data</li>
+</ul>
+<h3 id="int8">Int8<a class="headerlink" href="#int8" title="Permanent link">&para;</a></h3>
+<p>8-bit signed integer message type.</p>
+<h4 id="fields_1">Fields<a class="headerlink" href="#fields_1" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>data</code>: int - Integer data (range: -128 to 127)</li>
+</ul>
+<h3 id="int16">Int16<a class="headerlink" href="#int16" title="Permanent link">&para;</a></h3>
+<p>16-bit signed integer message type.</p>
+<h4 id="fields_2">Fields<a class="headerlink" href="#fields_2" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>data</code>: int - Integer data (range: -32,768 to 32,767)</li>
+</ul>
+<h3 id="int32">Int32<a class="headerlink" href="#int32" title="Permanent link">&para;</a></h3>
+<p>32-bit signed integer message type.</p>
+<h4 id="fields_3">Fields<a class="headerlink" href="#fields_3" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>data</code>: int - Integer data (range: -2,147,483,648 to 2,147,483,647)</li>
+</ul>
+<h3 id="int64">Int64<a class="headerlink" href="#int64" title="Permanent link">&para;</a></h3>
+<p>64-bit signed integer message type.</p>
+<h4 id="fields_4">Fields<a class="headerlink" href="#fields_4" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>data</code>: int - Integer data (range: -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807)</li>
+</ul>
+<h3 id="uint8">UInt8<a class="headerlink" href="#uint8" title="Permanent link">&para;</a></h3>
+<p>8-bit unsigned integer message type.</p>
+<h4 id="fields_5">Fields<a class="headerlink" href="#fields_5" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>data</code>: int - Integer data (range: 0 to 255)</li>
+</ul>
+<h3 id="uint16">UInt16<a class="headerlink" href="#uint16" title="Permanent link">&para;</a></h3>
+<p>16-bit unsigned integer message type.</p>
+<h4 id="fields_6">Fields<a class="headerlink" href="#fields_6" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>data</code>: int - Integer data (range: 0 to 65,535)</li>
+</ul>
+<h3 id="uint32">UInt32<a class="headerlink" href="#uint32" title="Permanent link">&para;</a></h3>
+<p>32-bit unsigned integer message type.</p>
+<h4 id="fields_7">Fields<a class="headerlink" href="#fields_7" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>data</code>: int - Integer data (range: 0 to 4,294,967,295)</li>
+</ul>
+<h3 id="uint64">UInt64<a class="headerlink" href="#uint64" title="Permanent link">&para;</a></h3>
+<p>64-bit unsigned integer message type.</p>
+<h4 id="fields_8">Fields<a class="headerlink" href="#fields_8" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>data</code>: int - Integer data (range: 0 to 18,446,744,073,709,551,615)</li>
+</ul>
+<h3 id="float32">Float32<a class="headerlink" href="#float32" title="Permanent link">&para;</a></h3>
+<p>32-bit floating point message type.</p>
+<h4 id="fields_9">Fields<a class="headerlink" href="#fields_9" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>data</code>: float - Floating point data</li>
+</ul>
+<h3 id="float64">Float64<a class="headerlink" href="#float64" title="Permanent link">&para;</a></h3>
+<p>64-bit floating point message type.</p>
+<h4 id="fields_10">Fields<a class="headerlink" href="#fields_10" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>data</code>: float - Floating point data</li>
+</ul>
+<h3 id="bool">Bool<a class="headerlink" href="#bool" title="Permanent link">&para;</a></h3>
+<p>Boolean message type.</p>
+<h4 id="fields_11">Fields<a class="headerlink" href="#fields_11" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>data</code>: bool - Boolean data (True or False)</li>
+</ul>
+<h3 id="empty">Empty<a class="headerlink" href="#empty" title="Permanent link">&para;</a></h3>
+<p>Empty message type.</p>
+<h4 id="fields_12">Fields<a class="headerlink" href="#fields_12" title="Permanent link">&para;</a></h4>
+<ul>
+<li>None</li>
+</ul>
+<h3 id="time">Time<a class="headerlink" href="#time" title="Permanent link">&para;</a></h3>
+<p>Time message type.</p>
+<h4 id="fields_13">Fields<a class="headerlink" href="#fields_13" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>secs</code>: int - Seconds</li>
+<li><code>nsecs</code>: int - Nanoseconds</li>
+</ul>
+<h3 id="duration">Duration<a class="headerlink" href="#duration" title="Permanent link">&para;</a></h3>
+<p>Duration message type.</p>
+<h4 id="fields_14">Fields<a class="headerlink" href="#fields_14" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>secs</code>: int - Seconds</li>
+<li><code>nsecs</code>: int - Nanoseconds</li>
+</ul>
+<h3 id="multiarraydimension">MultiArrayDimension<a class="headerlink" href="#multiarraydimension" title="Permanent link">&para;</a></h3>
+<p>Dimension description for multi-dimensional arrays.</p>
+<h4 id="fields_15">Fields<a class="headerlink" href="#fields_15" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>label</code>: str - Label for the dimension</li>
+<li><code>size</code>: int - Size of the dimension</li>
+<li><code>stride</code>: int - Stride of the dimension</li>
+</ul>
+<h3 id="multiarraylayout">MultiArrayLayout<a class="headerlink" href="#multiarraylayout" title="Permanent link">&para;</a></h3>
+<p>Layout description for multi-dimensional arrays.</p>
+<h4 id="fields_16">Fields<a class="headerlink" href="#fields_16" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>dim</code>: List[MultiArrayDimension] - Array of dimension properties</li>
+<li><code>data_offset</code>: int - Offset to first data point in the array</li>
+</ul>
+<h3 id="bytemultiarray">ByteMultiArray<a class="headerlink" href="#bytemultiarray" title="Permanent link">&para;</a></h3>
+<p>Multi-array of bytes.</p>
+<h4 id="fields_17">Fields<a class="headerlink" href="#fields_17" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>layout</code>: MultiArrayLayout - Message layout</li>
+<li><code>data</code>: List[int] - Array of bytes</li>
+</ul>
+<h3 id="int8multiarray">Int8MultiArray<a class="headerlink" href="#int8multiarray" title="Permanent link">&para;</a></h3>
+<p>Multi-array of Int8 values.</p>
+<h4 id="fields_18">Fields<a class="headerlink" href="#fields_18" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>layout</code>: MultiArrayLayout - Message layout</li>
+<li><code>data</code>: List[int] - Array of Int8 values</li>
+</ul>
+<h3 id="int16multiarray">Int16MultiArray<a class="headerlink" href="#int16multiarray" title="Permanent link">&para;</a></h3>
+<p>Multi-array of Int16 values.</p>
+<h4 id="fields_19">Fields<a class="headerlink" href="#fields_19" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>layout</code>: MultiArrayLayout - Message layout</li>
+<li><code>data</code>: List[int] - Array of Int16 values</li>
+</ul>
+<h3 id="int32multiarray">Int32MultiArray<a class="headerlink" href="#int32multiarray" title="Permanent link">&para;</a></h3>
+<p>Multi-array of Int32 values.</p>
+<h4 id="fields_20">Fields<a class="headerlink" href="#fields_20" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>layout</code>: MultiArrayLayout - Message layout</li>
+<li><code>data</code>: List[int] - Array of Int32 values</li>
+</ul>
+<h3 id="int64multiarray">Int64MultiArray<a class="headerlink" href="#int64multiarray" title="Permanent link">&para;</a></h3>
+<p>Multi-array of Int64 values.</p>
+<h4 id="fields_21">Fields<a class="headerlink" href="#fields_21" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>layout</code>: MultiArrayLayout - Message layout</li>
+<li><code>data</code>: List[int] - Array of Int64 values</li>
+</ul>
+<h3 id="uint8multiarray">UInt8MultiArray<a class="headerlink" href="#uint8multiarray" title="Permanent link">&para;</a></h3>
+<p>Multi-array of UInt8 values.</p>
+<h4 id="fields_22">Fields<a class="headerlink" href="#fields_22" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>layout</code>: MultiArrayLayout - Message layout</li>
+<li><code>data</code>: List[int] - Array of UInt8 values</li>
+</ul>
+<h3 id="uint16multiarray">UInt16MultiArray<a class="headerlink" href="#uint16multiarray" title="Permanent link">&para;</a></h3>
+<p>Multi-array of UInt16 values.</p>
+<h4 id="fields_23">Fields<a class="headerlink" href="#fields_23" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>layout</code>: MultiArrayLayout - Message layout</li>
+<li><code>data</code>: List[int] - Array of UInt16 values</li>
+</ul>
+<h3 id="uint32multiarray">UInt32MultiArray<a class="headerlink" href="#uint32multiarray" title="Permanent link">&para;</a></h3>
+<p>Multi-array of UInt32 values.</p>
+<h4 id="fields_24">Fields<a class="headerlink" href="#fields_24" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>layout</code>: MultiArrayLayout - Message layout</li>
+<li><code>data</code>: List[int] - Array of UInt32 values</li>
+</ul>
+<h3 id="uint64multiarray">UInt64MultiArray<a class="headerlink" href="#uint64multiarray" title="Permanent link">&para;</a></h3>
+<p>Multi-array of UInt64 values.</p>
+<h4 id="fields_25">Fields<a class="headerlink" href="#fields_25" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>layout</code>: MultiArrayLayout - Message layout</li>
+<li><code>data</code>: List[int] - Array of UInt64 values</li>
+</ul>
+<h3 id="float32multiarray">Float32MultiArray<a class="headerlink" href="#float32multiarray" title="Permanent link">&para;</a></h3>
+<p>Multi-array of Float32 values.</p>
+<h4 id="fields_26">Fields<a class="headerlink" href="#fields_26" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>layout</code>: MultiArrayLayout - Message layout</li>
+<li><code>data</code>: List[float] - Array of Float32 values</li>
+</ul>
+<h3 id="float64multiarray">Float64MultiArray<a class="headerlink" href="#float64multiarray" title="Permanent link">&para;</a></h3>
+<p>Multi-array of Float64 values.</p>
+<h4 id="fields_27">Fields<a class="headerlink" href="#fields_27" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>layout</code>: MultiArrayLayout - Message layout</li>
+<li><code>data</code>: List[float] - Array of Float64 values</li>
+</ul>
+<h2 id="qos-classes">📋 QoS Classes<a class="headerlink" href="#qos-classes" title="Permanent link">&para;</a></h2>
+<h3 id="reliabilitypolicy">ReliabilityPolicy<a class="headerlink" href="#reliabilitypolicy" title="Permanent link">&para;</a></h3>
+<p>Reliability policy for message delivery.</p>
+<ul>
+<li><code>RELIABLE</code>: Guaranteed delivery</li>
+<li><code>BEST_EFFORT</code>: No guarantee of delivery</li>
+</ul>
+<h3 id="durabilitypolicy">DurabilityPolicy<a class="headerlink" href="#durabilitypolicy" title="Permanent link">&para;</a></h3>
+<p>Durability policy for message persistence.</p>
+<ul>
+<li><code>TRANSIENT_LOCAL</code>: Replays last message for late subscribers</li>
+<li><code>VOLATILE</code>: No message replay</li>
+</ul>
+<h3 id="qosprofile">QoSProfile<a class="headerlink" href="#qosprofile" title="Permanent link">&para;</a></h3>
+<p>Quality of Service profile defining communication policies.</p>
+<h4 id="constructor_1">Constructor<a class="headerlink" href="#constructor_1" title="Permanent link">&para;</a></h4>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="n">QoSProfile</span><span class="p">(</span><span class="n">reliability</span><span class="p">:</span> <span class="n">ReliabilityPolicy</span> <span class="o">=</span> <span class="n">ReliabilityPolicy</span><span class="o">.</span><span class="n">RELIABLE</span><span class="p">,</span>
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>           <span class="n">durability</span><span class="p">:</span> <span class="n">DurabilityPolicy</span> <span class="o">=</span> <span class="n">DurabilityPolicy</span><span class="o">.</span><span class="n">VOLATILE</span><span class="p">,</span>
+</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>           <span class="n">depth</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
+</span></code></pre></div>
+<h4 id="fields_28">Fields<a class="headerlink" href="#fields_28" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>reliability</code>: ReliabilityPolicy - Message delivery reliability</li>
+<li><code>durability</code>: DurabilityPolicy - Message persistence policy</li>
+<li><code>depth</code>: int - Queue depth for messages</li>
+</ul>
+<h2 id="publisher-class">📢 Publisher Class<a class="headerlink" href="#publisher-class" title="Permanent link">&para;</a></h2>
+<h3 id="constructor_2">Constructor<a class="headerlink" href="#constructor_2" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="n">Publisher</span><span class="p">(</span><span class="n">node</span><span class="p">:</span> <span class="n">Node</span><span class="p">,</span> <span class="n">msg_type</span><span class="p">:</span> <span class="nb">type</span><span class="p">,</span> <span class="n">topic_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">qos_profile</span><span class="p">:</span> <span class="n">QoSProfile</span><span class="p">)</span>
+</span></code></pre></div>
+<ul>
+<li><code>node</code>: Node - Parent node</li>
+<li><code>msg_type</code>: type - Message type for this publisher</li>
+<li><code>topic_name</code>: str - Topic name to publish to</li>
+<li><code>qos_profile</code>: QoSProfile - Quality of Service profile</li>
+</ul>
+<h3 id="methods_1">Methods<a class="headerlink" href="#methods_1" title="Permanent link">&para;</a></h3>
+<h4 id="publish">publish<a class="headerlink" href="#publish" title="Permanent link">&para;</a></h4>
+<p><div class="language-python highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="n">publish</span><span class="p">(</span><span class="n">message</span><span class="p">:</span> <span class="n">Message</span><span class="p">)</span>
+</span></code></pre></div>
+Publish a message to the topic.</p>
+<ul>
+<li><code>message</code>: Message - Message to publish</li>
+</ul>
+<h2 id="subscriber-class">📡 Subscriber Class<a class="headerlink" href="#subscriber-class" title="Permanent link">&para;</a></h2>
+<h3 id="constructor_3">Constructor<a class="headerlink" href="#constructor_3" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="n">Subscriber</span><span class="p">(</span><span class="n">node</span><span class="p">:</span> <span class="n">Node</span><span class="p">,</span> <span class="n">msg_type</span><span class="p">:</span> <span class="nb">type</span><span class="p">,</span> <span class="n">topic_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">callback</span><span class="p">:</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">qos_profile</span><span class="p">:</span> <span class="n">QoSProfile</span><span class="p">)</span>
+</span></code></pre></div>
+<ul>
+<li><code>node</code>: Node - Parent node</li>
+<li><code>msg_type</code>: type - Message type for this subscription</li>
+<li><code>topic_name</code>: str - Topic name to subscribe to</li>
+<li><code>callback</code>: Callable - Callback function for received messages</li>
+<li><code>qos_profile</code>: QoSProfile - Quality of Service profile</li>
+</ul>
+<h2 id="service-class">🤝 Service Class<a class="headerlink" href="#service-class" title="Permanent link">&para;</a></h2>
+<h3 id="constructor_4">Constructor<a class="headerlink" href="#constructor_4" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="n">Service</span><span class="p">(</span><span class="n">node</span><span class="p">:</span> <span class="n">Node</span><span class="p">,</span> <span class="n">srv_type</span><span class="p">:</span> <span class="nb">type</span><span class="p">,</span> <span class="n">service_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">callback</span><span class="p">:</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">qos_profile</span><span class="p">:</span> <span class="n">QoSProfile</span><span class="p">)</span>
+</span></code></pre></div>
+<ul>
+<li><code>node</code>: Node - Parent node</li>
+<li><code>srv_type</code>: type - Service type</li>
+<li><code>service_name</code>: str - Service name</li>
+<li><code>callback</code>: Callable - Callback function for service requests</li>
+<li><code>qos_profile</code>: QoSProfile - Quality of Service profile</li>
+</ul>
+<h2 id="client-class">📞 Client Class<a class="headerlink" href="#client-class" title="Permanent link">&para;</a></h2>
+<h3 id="constructor_5">Constructor<a class="headerlink" href="#constructor_5" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="n">Client</span><span class="p">(</span><span class="n">node</span><span class="p">:</span> <span class="n">Node</span><span class="p">,</span> <span class="n">srv_type</span><span class="p">:</span> <span class="nb">type</span><span class="p">,</span> <span class="n">service_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">qos_profile</span><span class="p">:</span> <span class="n">QoSProfile</span><span class="p">)</span>
+</span></code></pre></div>
+<ul>
+<li><code>node</code>: Node - Parent node</li>
+<li><code>srv_type</code>: type - Service type</li>
+<li><code>service_name</code>: str - Service name to call</li>
+<li><code>qos_profile</code>: QoSProfile - Quality of Service profile</li>
+</ul>
+<h3 id="methods_2">Methods<a class="headerlink" href="#methods_2" title="Permanent link">&para;</a></h3>
+<h4 id="call">call<a class="headerlink" href="#call" title="Permanent link">&para;</a></h4>
+<p><div class="language-python highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="n">call</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+</span></code></pre></div>
+Call a service synchronously.</p>
+<ul>
+<li><code>request</code>: Service request object</li>
+<li>Returns: Service response object</li>
+</ul>
+<h4 id="call_async">call_async<a class="headerlink" href="#call_async" title="Permanent link">&para;</a></h4>
+<p><div class="language-python highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="n">call_async</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+</span></code></pre></div>
+Call a service asynchronously.</p>
+<ul>
+<li><code>request</code>: Service request object</li>
+<li>Returns: Future object for the service response</li>
+</ul>
+<h2 id="discovery-class">🔍 Discovery Class<a class="headerlink" href="#discovery-class" title="Permanent link">&para;</a></h2>
+<h3 id="methods_3">Methods<a class="headerlink" href="#methods_3" title="Permanent link">&para;</a></h3>
+<h4 id="get_all_topics">get_all_topics<a class="headerlink" href="#get_all_topics" title="Permanent link">&para;</a></h4>
+<p><div class="language-python highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="n">get_all_topics</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+</span></code></pre></div>
+Get all available topics.</p>
+<ul>
+<li>Returns: List of topic names</li>
+</ul>
+<h4 id="get_all_services">get_all_services<a class="headerlink" href="#get_all_services" title="Permanent link">&para;</a></h4>
+<p><div class="language-python highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="n">get_all_services</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+</span></code></pre></div>
+Get all available services.</p>
+<ul>
+<li>Returns: List of service names</li>
+</ul>
+<h4 id="get_topic_types">get_topic_types<a class="headerlink" href="#get_topic_types" title="Permanent link">&para;</a></h4>
+<p><div class="language-python highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="n">get_topic_types</span><span class="p">(</span><span class="n">topic_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+</span></code></pre></div>
+Get the types of a topic.</p>
+<ul>
+<li><code>topic_name</code>: Name of the topic</li>
+<li>Returns: List of topic types</li>
+</ul>
+<h4 id="get_service_types">get_service_types<a class="headerlink" href="#get_service_types" title="Permanent link">&para;</a></h4>
+<p><div class="language-python highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="n">get_service_types</span><span class="p">(</span><span class="n">service_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+</span></code></pre></div>
+Get the types of a service.</p>
+<ul>
+<li><code>service_name</code>: Name of the service</li>
+<li>Returns: List of service types</li>
+</ul>
+<h4 id="get_nodes">get_nodes<a class="headerlink" href="#get_nodes" title="Permanent link">&para;</a></h4>
+<p><div class="language-python highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="n">get_nodes</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+</span></code></pre></div>
+Get all available nodes.</p>
+<ul>
+<li>Returns: List of node names</li>
+</ul>
+<h2 id="bridge-class">🌉 Bridge Class<a class="headerlink" href="#bridge-class" title="Permanent link">&para;</a></h2>
+<p>The bridge class provides functionality to interact with native ROS systems.</p>
+<h3 id="constructor_6">Constructor<a class="headerlink" href="#constructor_6" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="n">Bridge</span><span class="p">(</span><span class="n">host</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;localhost&quot;</span><span class="p">,</span> <span class="n">port</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">11311</span><span class="p">)</span>
+</span></code></pre></div>
+<ul>
+<li><code>host</code>: str - ROS master host (default: "localhost")</li>
+<li><code>port</code>: int - ROS master port (default: 11311)</li>
+</ul>
+<h3 id="methods_4">Methods<a class="headerlink" href="#methods_4" title="Permanent link">&para;</a></h3>
+<h4 id="connect">connect<a class="headerlink" href="#connect" title="Permanent link">&para;</a></h4>
+<p><div class="language-python highlight"><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="n">connect</span><span class="p">()</span>
+</span></code></pre></div>
+Connect to the ROS master.</p>
+<p>Raises BridgeConnectionError if connection fails.</p>
+<h4 id="discover_ros_nodes">discover_ros_nodes<a class="headerlink" href="#discover_ros_nodes" title="Permanent link">&para;</a></h4>
+<p><div class="language-python highlight"><pre><span></span><code><span id="__span-34-1"><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="n">discover_ros_nodes</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+</span></code></pre></div>
+Discover all native ROS nodes.</p>
+<ul>
+<li>Returns: List of node names</li>
+</ul>
+<h4 id="discover_ros_topics">discover_ros_topics<a class="headerlink" href="#discover_ros_topics" title="Permanent link">&para;</a></h4>
+<p><div class="language-python highlight"><pre><span></span><code><span id="__span-35-1"><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="n">discover_ros_topics</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span>
+</span></code></pre></div>
+Discover all native ROS topics.</p>
+<ul>
+<li>Returns: List of dictionaries with topic information</li>
+</ul>
+<h4 id="discover_ros_services">discover_ros_services<a class="headerlink" href="#discover_ros_services" title="Permanent link">&para;</a></h4>
+<p><div class="language-python highlight"><pre><span></span><code><span id="__span-36-1"><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="n">discover_ros_services</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span>
+</span></code></pre></div>
+Discover all native ROS services.</p>
+<ul>
+<li>Returns: List of dictionaries with service information</li>
+</ul>
+<h2 id="messagetranslator-class">🔄 MessageTranslator Class<a class="headerlink" href="#messagetranslator-class" title="Permanent link">&para;</a></h2>
+<p>Handles translation between Python ROS engine messages and native ROS messages.</p>
+<h3 id="methods_5">Methods<a class="headerlink" href="#methods_5" title="Permanent link">&para;</a></h3>
+<h4 id="pyros_to_ros">pyros_to_ros<a class="headerlink" href="#pyros_to_ros" title="Permanent link">&para;</a></h4>
+<p><div class="language-python highlight"><pre><span></span><code><span id="__span-37-1"><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="n">pyros_to_ros</span><span class="p">(</span><span class="n">message</span><span class="p">:</span> <span class="n">Message</span><span class="p">,</span> <span class="n">ros_message_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span>
+</span></code></pre></div>
+Translate a Python ROS engine message to a native ROS message format.</p>
+<ul>
+<li><code>message</code>: Python ROS engine message</li>
+<li><code>ros_message_type</code>: Native ROS message type (e.g., "std_msgs/String")</li>
+<li>Returns: Dict - Native ROS message in dictionary format</li>
+</ul>
+<h4 id="ros_to_pyros">ros_to_pyros<a class="headerlink" href="#ros_to_pyros" title="Permanent link">&para;</a></h4>
+<p><div class="language-python highlight"><pre><span></span><code><span id="__span-38-1"><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a><span class="n">ros_to_pyros</span><span class="p">(</span><span class="n">ros_message</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span> <span class="n">pyros_message_type</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">Message</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Message</span>
+</span></code></pre></div>
+Translate a native ROS message to a Python ROS engine message.</p>
+<ul>
+<li><code>ros_message</code>: Native ROS message in dictionary format</li>
+<li><code>pyros_message_type</code>: Python ROS engine message type</li>
+<li>Returns: Message - Python ROS engine message</li>
+</ul>
+<h4 id="get_pyros_type">get_pyros_type<a class="headerlink" href="#get_pyros_type" title="Permanent link">&para;</a></h4>
+<p><div class="language-python highlight"><pre><span></span><code><span id="__span-39-1"><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a><span class="n">get_pyros_type</span><span class="p">(</span><span class="n">ros_message_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Type</span><span class="p">[</span><span class="n">Message</span><span class="p">]</span>
+</span></code></pre></div>
+Get the corresponding Python ROS engine message type for a native ROS message type.</p>
+<ul>
+<li><code>ros_message_type</code>: Native ROS message type (e.g., "std_msgs/String")</li>
+<li>Returns: Type[Message] - Corresponding Python ROS engine message type</li>
+</ul>
+<h4 id="get_ros_type">get_ros_type<a class="headerlink" href="#get_ros_type" title="Permanent link">&para;</a></h4>
+<p><div class="language-python highlight"><pre><span></span><code><span id="__span-40-1"><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a><span class="n">get_ros_type</span><span class="p">(</span><span class="n">pyros_message_type</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">Message</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">str</span>
+</span></code></pre></div>
+Get the corresponding native ROS message type for a Python ROS engine message type.</p>
+<ul>
+<li><code>pyros_message_type</code>: Python ROS engine message type</li>
+<li>Returns: str - Corresponding native ROS message type</li>
+</ul>
+<h2 id="launchsystem-class">🚀 LaunchSystem Class<a class="headerlink" href="#launchsystem-class" title="Permanent link">&para;</a></h2>
+<p>The launch system for managing multiple nodes and providing system status information.</p>
+<h3 id="constructor_7">Constructor<a class="headerlink" href="#constructor_7" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-41-1"><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a><span class="n">LaunchSystem</span><span class="p">()</span>
+</span></code></pre></div>
+<h3 id="methods_6">Methods<a class="headerlink" href="#methods_6" title="Permanent link">&para;</a></h3>
+<h4 id="add_node">add_node<a class="headerlink" href="#add_node" title="Permanent link">&para;</a></h4>
+<p><div class="language-python highlight"><pre><span></span><code><span id="__span-42-1"><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a><span class="n">add_node</span><span class="p">(</span><span class="n">node_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">node_class</span><span class="p">:</span> <span class="nb">type</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</span></code></pre></div>
+Add a node to the launch system.</p>
+<ul>
+<li><code>node_name</code>: Name to register the node under</li>
+<li><code>node_class</code>: The node class to instantiate</li>
+<li><code>*args</code>: Positional arguments for node initialization</li>
+<li><code>**kwargs</code>: Keyword arguments for node initialization</li>
+</ul>
+<h4 id="add_node_from_file">add_node_from_file<a class="headerlink" href="#add_node_from_file" title="Permanent link">&para;</a></h4>
+<p><div class="language-python highlight"><pre><span></span><code><span id="__span-43-1"><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a><span class="n">add_node_from_file</span><span class="p">(</span><span class="n">node_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">file_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">class_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</span></code></pre></div>
+Add a node to the launch system from a Python file.</p>
+<ul>
+<li><code>node_name</code>: Name to register the node under</li>
+<li><code>file_path</code>: Path to the Python file containing the node class</li>
+<li><code>class_name</code>: Name of the node class in the file</li>
+<li><code>*args</code>: Positional arguments for node initialization</li>
+<li><code>**kwargs</code>: Keyword arguments for node initialization</li>
+</ul>
+<h4 id="remove_node">remove_node<a class="headerlink" href="#remove_node" title="Permanent link">&para;</a></h4>
+<p><div class="language-python highlight"><pre><span></span><code><span id="__span-44-1"><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a><span class="n">remove_node</span><span class="p">(</span><span class="n">node_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span>
+</span></code></pre></div>
+Remove a node from the launch system.</p>
+<ul>
+<li><code>node_name</code>: Name of the node to remove</li>
+</ul>
+<h4 id="start">start<a class="headerlink" href="#start" title="Permanent link">&para;</a></h4>
+<p><div class="language-python highlight"><pre><span></span><code><span id="__span-45-1"><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a><span class="n">start</span><span class="p">()</span>
+</span></code></pre></div>
+Start all nodes in the launch system.</p>
+<h4 id="shutdown">shutdown<a class="headerlink" href="#shutdown" title="Permanent link">&para;</a></h4>
+<p><div class="language-python highlight"><pre><span></span><code><span id="__span-46-1"><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a><span class="n">shutdown</span><span class="p">()</span>
+</span></code></pre></div>
+Shutdown all nodes in the launch system.</p>
+<h4 id="get_system_status">get_system_status<a class="headerlink" href="#get_system_status" title="Permanent link">&para;</a></h4>
+<p><div class="language-python highlight"><pre><span></span><code><span id="__span-47-1"><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a><span class="n">get_system_status</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span>
+</span></code></pre></div>
+Get the status of the entire system.</p>
+<ul>
+<li>Returns: Dict containing system status information</li>
+</ul>
+<h4 id="print_system_status">print_system_status<a class="headerlink" href="#print_system_status" title="Permanent link">&para;</a></h4>
+<p><div class="language-python highlight"><pre><span></span><code><span id="__span-48-1"><a id="__codelineno-48-1" name="__codelineno-48-1" href="#__codelineno-48-1"></a><span class="n">print_system_status</span><span class="p">()</span>
+</span></code></pre></div>
+Print the status of the entire system in a human-readable format.</p>
+<h2 id="launchdescription-class">📄 LaunchDescription Class<a class="headerlink" href="#launchdescription-class" title="Permanent link">&para;</a></h2>
+<p>Description of a launch system configuration.</p>
+<h3 id="constructor_8">Constructor<a class="headerlink" href="#constructor_8" title="Permanent link">&para;</a></h3>
+<p><div class="language-python highlight"><pre><span></span><code><span id="__span-49-1"><a id="__codelineno-49-1" name="__codelineno-49-1" href="#__codelineno-49-1"></a><span class="n">LaunchDescription</span><span class="p">(</span><span class="n">launch_system</span><span class="p">:</span> <span class="n">LaunchSystem</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span>
+</span></code></pre></div>
+Initialize a launch description.</p>
+<ul>
+<li><code>launch_system</code>: Optional LaunchSystem to use</li>
+</ul>
+<h3 id="methods_7">Methods<a class="headerlink" href="#methods_7" title="Permanent link">&para;</a></h3>
+<h4 id="add_node_1">add_node<a class="headerlink" href="#add_node_1" title="Permanent link">&para;</a></h4>
+<p><div class="language-python highlight"><pre><span></span><code><span id="__span-50-1"><a id="__codelineno-50-1" name="__codelineno-50-1" href="#__codelineno-50-1"></a><span class="n">add_node</span><span class="p">(</span><span class="n">node_class</span><span class="p">:</span> <span class="nb">type</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</span></code></pre></div>
+Add a node action to the launch description.</p>
+<ul>
+<li><code>node_class</code>: The node class to instantiate</li>
+<li><code>*args</code>: Positional arguments for node initialization</li>
+<li><code>**kwargs</code>: Keyword arguments for node initialization</li>
+</ul>
+<h4 id="add_node_from_file_1">add_node_from_file<a class="headerlink" href="#add_node_from_file_1" title="Permanent link">&para;</a></h4>
+<p><div class="language-python highlight"><pre><span></span><code><span id="__span-51-1"><a id="__codelineno-51-1" name="__codelineno-51-1" href="#__codelineno-51-1"></a><span class="n">add_node_from_file</span><span class="p">(</span><span class="n">file_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">class_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</span></code></pre></div>
+Add a node action from a Python file to the launch description.</p>
+<ul>
+<li><code>file_path</code>: Path to the Python file containing the node class</li>
+<li><code>class_name</code>: Name of the node class in the file</li>
+<li><code>*args</code>: Positional arguments for node initialization</li>
+<li><code>**kwargs</code>: Keyword arguments for node initialization</li>
+</ul>
+<h4 id="execute">execute<a class="headerlink" href="#execute" title="Permanent link">&para;</a></h4>
+<p><div class="language-python highlight"><pre><span></span><code><span id="__span-52-1"><a id="__codelineno-52-1" name="__codelineno-52-1" href="#__codelineno-52-1"></a><span class="n">execute</span><span class="p">()</span>
+</span></code></pre></div>
+Execute all actions in the launch description.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../usage/" class="btn btn-neutral float-left" title="Usage Guide"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../launch/" class="btn btn-neutral float-right" title="Launch System">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../usage/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../launch/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
