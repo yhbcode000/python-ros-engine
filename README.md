@@ -9,7 +9,7 @@ A pure Python implementation of ROS2 core functionality with bridging capabiliti
 ## Project Structure
 
 ```mermaid
-graph TD
+flowchart TD
     A[Python ROS Engine] --> B[Core Functionality]
     A --> C[Bridging Capabilities]
     B --> B1[Node Management]
@@ -20,18 +20,6 @@ graph TD
     C --> C1[ROS1 Bridge]
     C --> C2[Message Translation]
 ```
-
-## Features
-
-- Node creation and lifecycle management
-- Publisher and subscriber patterns with Quality of Service (QoS) profiles
-- Service and client communication
-- Parameter handling with callbacks
-- Topic and service discovery
-- Timer functionality
-- ROS1 bridging capabilities for node/topic/service discovery
-- Message translation between Python ROS engine and native ROS
-- Configuration with Hydra best practices
 
 ## Features
 
@@ -306,7 +294,7 @@ except Exception as e:
 Architecture diagram:
 
 ```mermaid
-graph LR
+flowchart LR
     A[Python ROS Engine] -- Message Translation --> B((ROS Bridge))
     B -- XMLRPC/Socket --> C[ROS Master]
     B -- TCP/UDP --> D[Native ROS Nodes]

@@ -17,7 +17,7 @@ A pure Python implementation of ROS2 core functionality with bridging capabiliti
 ## Project Structure
 
 ```mermaid
-graph TD
+flowchart TD
     A[Python ROS Engine] --> B[Core Functionality]
     A --> C[Bridging Capabilities]
     B --> B1[Node Management]
