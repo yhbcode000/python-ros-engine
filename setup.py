@@ -3,9 +3,6 @@ from setuptools import find_packages, setup
 with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
-with open("LICENSE", "r", encoding="utf-8") as fh:
-    license_text = fh.read()
-
 setup(
     name="python-ros-engine",
     version="0.1.0",
@@ -46,6 +43,11 @@ setup(
             "pytest-asyncio>=0.14.0",
             "mkdocs>=1.4.0",
             "mkdocs-material>=9.0.0",
+            "black>=22.0.0",
+            "isort>=5.10.0",
+            "flake8>=4.0.0",
+            "pre-commit>=2.20.0",
         ],
     },
+    license="Apache License 2.0",
 )
