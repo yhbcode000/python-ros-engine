@@ -38,5 +38,5 @@ markdown_extensions:
 extra_css:
   - custom.css
 
-extra_files:
-  - .gitattributes
+hooks:
+  - hooks/copy_gitattributes.py
