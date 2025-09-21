@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="python-ros-engine",
-    version="0.1.0",
+    version="0.1.1",
     author="Python ROS Engine Team",
     author_email="pyros@example.com",
     description="A pure Python implementation of ROS2 functionality with "
