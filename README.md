@@ -8,7 +8,7 @@ A pure Python implementation of ROS2 core functionality with bridging capabiliti
 
 ## Project Structure
 
-<pre class="mermaid">
+```mermaid
 flowchart TD
     A[Python ROS Engine] --> B[Core Functionality]
     A --> C[Bridging Capabilities]
@@ -19,7 +19,7 @@ flowchart TD
     B --> B5[Timers]
     C --> C1[ROS1 Bridge]
     C --> C2[Message Translation]
-</pre>
+```
 
 ## Features
 
