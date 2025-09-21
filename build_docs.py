@@ -1,8 +1,5 @@
 #!/usr/bin/env python3
-
-"""
-Script to build and serve the documentation site.
-"""
+"""Script to build and serve the documentation site."""
 
 import subprocess
 import sys

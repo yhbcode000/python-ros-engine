@@ -656,3 +656,112 @@ Get the corresponding native ROS message type for a Python ROS engine message ty
 
 - `pyros_message_type`: Python ROS engine message type
 - Returns: str - Corresponding native ROS message type
+
+## LaunchSystem Class
+
+The launch system for managing multiple nodes and providing system status information.
+
+### Constructor
+```python
+LaunchSystem()
+```
+
+### Methods
+
+#### add_node
+```python
+add_node(node_name: str, node_class: type, *args, **kwargs)
+```
+Add a node to the launch system.
+
+- `node_name`: Name to register the node under
+- `node_class`: The node class to instantiate
+- `*args`: Positional arguments for node initialization
+- `**kwargs`: Keyword arguments for node initialization
+
+#### add_node_from_file
+```python
+add_node_from_file(node_name: str, file_path: str, class_name: str, *args, **kwargs)
+```
+Add a node to the launch system from a Python file.
+
+- `node_name`: Name to register the node under
+- `file_path`: Path to the Python file containing the node class
+- `class_name`: Name of the node class in the file
+- `*args`: Positional arguments for node initialization
+- `**kwargs`: Keyword arguments for node initialization
+
+#### remove_node
+```python
+remove_node(node_name: str)
+```
+Remove a node from the launch system.
+
+- `node_name`: Name of the node to remove
+
+#### start
+```python
+start()
+```
+Start all nodes in the launch system.
+
+#### shutdown
+```python
+shutdown()
+```
+Shutdown all nodes in the launch system.
+
+#### get_system_status
+```python
+get_system_status() -> Dict[str, Any]
+```
+Get the status of the entire system.
+
+- Returns: Dict containing system status information
+
+#### print_system_status
+```python
+print_system_status()
+```
+Print the status of the entire system in a human-readable format.
+
+## LaunchDescription Class
+
+Description of a launch system configuration.
+
+### Constructor
+```python
+LaunchDescription(launch_system: LaunchSystem = None)
+```
+Initialize a launch description.
+
+- `launch_system`: Optional LaunchSystem to use
+
+### Methods
+
+#### add_node
+```python
+add_node(node_class: type, *args, **kwargs)
+```
+Add a node action to the launch description.
+
+- `node_class`: The node class to instantiate
+- `*args`: Positional arguments for node initialization
+- `**kwargs`: Keyword arguments for node initialization
+
+#### add_node_from_file
+```python
+add_node_from_file(file_path: str, class_name: str, *args, **kwargs)
+```
+Add a node action from a Python file to the launch description.
+
+- `file_path`: Path to the Python file containing the node class
+- `class_name`: Name of the node class in the file
+- `*args`: Positional arguments for node initialization
+- `**kwargs`: Keyword arguments for node initialization
+
+#### execute
+```python
+execute()
+```
+Execute all actions in the launch description.

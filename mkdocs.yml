@@ -11,6 +11,7 @@ nav:
   - Installation: installation.md
   - Usage Guide: usage.md
   - API Documentation: api.md
+  - Launch System: launch.md
   - Bridging with Native ROS: bridging.md
   - Examples: examples.md
   - Contributing: contributing.md

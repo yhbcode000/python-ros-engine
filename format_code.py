@@ -1,8 +1,5 @@
 #!/usr/bin/env python3
-"""
-Code formatting and linting script.
-Runs all formatting and linting tools in sequence.
-"""
+"""Code formatting and linting script."""
 
 import subprocess
 import sys

@@ -13,10 +13,11 @@ graph TD
     A --> D[Service Node]
     A --> E[Client Node]
     A --> F[Bridge Node]
-    B --> G[(Topics)]
-    C --> G
-    E --> H[(Services)]
-    D --> H
+    A --> G[Launch System]
+    B --> H[(Topics)]
+    C --> H
+    E --> I[(Services)]
+    D --> I
 </pre>
 
 Here's a sequence diagram showing the interaction between the publisher and subscriber nodes in the examples:
@@ -83,6 +84,26 @@ This example demonstrates how to use the bridge functionality to discover native
 --8<-- "examples/bridge_example.py"
 ```
 
+## Launch System Examples
+
+These examples demonstrate how to use the launch system to manage multiple nodes.
+
+### Launch Description Example
+
+This example shows how to create a launch description programmatically:
+
+```python
+--8<-- "examples/launch_system_example.py"
+```
+
+### Launch File Example
+
+This example shows how to create a launch file that can be executed from the command line:
+
+```python
+--8<-- "examples/launch_example.py"
+```
+
 ## Complete Example Project
 
 In addition to the basic examples, we've included a complete example project in the `example_project/` directory that demonstrates how to build a robot system with multiple interconnected nodes.
@@ -110,6 +131,19 @@ python examples/subscriber_example.py
 python examples/service_example.py
 python examples/client_example.py
 python examples/bridge_example.py
+python examples/launch_system_example.py
+```
+
+To run the launch file example:
+
+```bash
+python -m pyros2.launch_cli examples/launch_example.py
+```
+
+To just check the system status without starting the nodes:
+
+```bash
+python -m pyros2.launch_cli examples/launch_example.py --status
 ```
 
 For the complete example project:

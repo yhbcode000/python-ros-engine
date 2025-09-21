@@ -17,6 +17,7 @@ from .exceptions import (
     ServiceNotFoundError,
     TopicNotFoundError,
 )
+from .launch import LaunchDescription, LaunchSystem
 from .message import (
     Bool,
     ByteMultiArray,
@@ -96,6 +97,8 @@ __all__ = [
     "Discovery",
     "Bridge",
     "MessageTranslator",
+    "LaunchSystem",
+    "LaunchDescription",
     "PyROSException",
     "NodeNotInitializedError",
     "InvalidTopicNameError",

@@ -1,1 +1,1 @@
-# This file makes the directory a Python package
+"""Examples package for the Python ROS Engine."""

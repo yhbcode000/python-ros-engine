@@ -1,3 +1,5 @@
+"""Python ROS Engine package setup."""
+
 from setuptools import find_packages, setup
 
 with open("README.md", "r", encoding="utf-8") as fh:
@@ -5,7 +7,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="python-ros-engine",
-    version="0.1.2",
+    version="1.0.1",
     author="Python ROS Engine Team",
     author_email="pyros@example.com",
     description="A pure Python implementation of ROS2 functionality with "

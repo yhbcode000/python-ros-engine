@@ -14,6 +14,7 @@ A pure Python implementation of ROS2 core functionality with bridging capabiliti
 graph TD
     A[Python ROS Engine] --> B[Core Functionality]
     A --> C[Bridging Capabilities]
+    A --> D[Launch System]
     B --> B1[Node Management]
     B --> B2[Publishers/Subscribers]
     B --> B3[Services/Clients]
@@ -21,6 +22,8 @@ graph TD
     B --> B5[Timers]
     C --> C1[ROS1 Bridge]
     C --> C2[Message Translation]
+    D --> D1[Launch Description]
+    D --> D2[System Status]
 ```
 
 ## Features
@@ -34,6 +37,8 @@ graph TD
 - ROS1 bridging capabilities for node/topic/service discovery
 - Message translation between Python ROS engine and native ROS
 - Configuration with Hydra best practices
+- Launch system for managing multiple nodes
+- System status reporting for nodes, topics, and services
 
 ## Installation
 
@@ -62,6 +67,7 @@ See the [examples](./examples) directory for complete working examples:
 - Publisher/Subscriber examples
 - Service/Client examples
 - Bridge examples
+- Launch system examples
 
 We've also included a [complete example project](./example_project) that demonstrates how to build a robot system with multiple interconnected nodes.
 
