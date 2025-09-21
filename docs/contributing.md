@@ -85,6 +85,8 @@ We maintain documentation in the `docs/` directory. When adding new features or 
 - Usage guide: `docs/usage.md`
 - Bridging documentation: `docs/bridging.md`
 
+Documentation can be built and served locally using the `build_docs.py` script. See [project_structure.md](../project_structure.md) for details on how to use this script.
+
 ## Pull Request Process
 
 1. Ensure any install or build dependencies are removed before the end of the layer when doing a build

@@ -39,7 +39,15 @@ python_ros_engine/
 ├── docs/
 │   ├── api.md
 │   ├── usage.md
-│   └── bridging.md
+│   ├── bridging.md
+│   ├── installation.md
+│   ├── examples.md
+│   ├── index.md
+│   ├── contributing.md
+│   ├── license.md
+│   ├── css/
+│   ├── javascripts/
+│   └── templates/
 ├── .github/
 │   └── workflows/
 │       └── deploy.yml         # GitHub Actions deployment configuration
@@ -47,7 +55,9 @@ python_ros_engine/
 ├── LICENSE
 ├── setup.py
 ├── pyproject.toml
-└── requirements.txt
+├── requirements.txt
+├── build_docs.py             # Documentation build and serve script
+└── mkdocs.yml                # MkDocs configuration
 ```
 
 ## Module Descriptions
@@ -85,9 +95,22 @@ python_ros_engine/
 5. **bridge_example.py** - Example showing bridging capabilities
 
 ### Documentation (docs/)
+All documentation is written in Markdown format and uses Mermaid diagrams for visual explanations:
 1. **api.md** - API documentation for all modules
 2. **usage.md** - Usage examples and tutorials
 3. **bridging.md** - Documentation on bridging with native ROS
+4. **installation.md** - Installation guide
+5. **examples.md** - Detailed examples
+6. **index.md** - Main documentation page
+7. **contributing.md** - Contribution guidelines
+8. **license.md** - License information
+9. **css/** - Custom CSS styling
+10. **javascripts/** - Custom JavaScript enhancements
+11. **templates/** - Custom HTML templates
+
+### Documentation Tools
+1. **build_docs.py** - Script to build and serve documentation locally with `mkdocs serve`
+2. **mkdocs.yml** - MkDocs configuration file defining site structure and plugins
 
 ### Deployment
 1. **setup.py** - Package setup configuration

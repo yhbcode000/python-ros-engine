@@ -51,12 +51,7 @@ pip install -e .
 
 Comprehensive documentation is available at: [https://yhbcode000.github.io/python-ros-engine/](https://yhbcode000.github.io/python-ros-engine/)
 
-For local development:
-```bash
-mkdocs serve
-```
-
-This will start a local development server at http://127.0.0.1:8000 that automatically reloads when you make changes to the documentation files.
+For information about building and serving the documentation locally, see the [project structure document](project_structure.md) which describes the `build_docs.py` script that can be used for this purpose.
 
 ## Examples
 
