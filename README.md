@@ -51,8 +51,6 @@ pip install -e .
 
 Comprehensive documentation is available at: [https://yhbcode000.github.io/python-ros-engine/](https://yhbcode000.github.io/python-ros-engine/)
 
-We've included a [Diagrams Guide](https://yhbcode000.github.io/python-ros-engine/diagrams/) showcasing various Mermaid diagram types that are useful for documenting ROS systems.
-
 For information about building and serving the documentation locally, see the [project structure document](project_structure.md) which describes the `build_docs.py` script that can be used for this purpose.
 
 ## Examples

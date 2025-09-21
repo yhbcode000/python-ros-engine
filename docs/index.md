@@ -58,7 +58,6 @@ To get started with the Python ROS Engine, check out our [Installation Guide](in
 - [API Documentation](api.md) - Detailed information about all classes and methods
 - [Bridging with Native ROS](bridging.md) - Information about interacting with native ROS systems
 - [Usage Guide](usage.md) - Comprehensive guide on how to use the engine
-- [Diagrams Guide](diagrams.md) - Guide to using various diagram types for ROS documentation
 
 ## Examples
 
