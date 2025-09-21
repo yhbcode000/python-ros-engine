@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//e/桌面/Rob_interaction/python_ros_engine/src/pyros2/**)",
+      "Read(//e/桌面/Rob_interaction/python_ros_engine/tests/**)",
+      "Bash(python:*)",
+      "Bash(flake8:*)",
+      "Read(//e/桌面/Rob_interaction/python_ros_engine/**)",
+      "Bash(pre-commit run:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
