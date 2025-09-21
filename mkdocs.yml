@@ -1,0 +1,40 @@
+site_name: Python ROS Engine
+site_description: A pure Python implementation of ROS2 functionality with bridging capabilities
+site_author: Python ROS Engine Team
+
+theme:
+  name: material
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - toc.integrate
+    - search.suggest
+    - search.highlight
+    - content.tabs.link
+    - content.code.annotation
+    - content.code.copy
+
+nav:
+  - Home: index.md
+  - Installation: installation.md
+  - Usage Guide: usage.md
+  - API Documentation: api.md
+  - Bridging with Native ROS: bridging.md
+  - Examples: examples.md
+  - Contributing: contributing.md
+  - License: license.md
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - admonition
+  - toc:
+      permalink: true
+  - meta
