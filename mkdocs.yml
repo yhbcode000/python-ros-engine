@@ -4,6 +4,17 @@ site_author: Python ROS Engine Team
 
 theme:
   name: readthedocs
+  custom_dir: docs/templates
+
+nav:
+  - Home: index.md
+  - Installation: installation.md
+  - Usage Guide: usage.md
+  - API Documentation: api.md
+  - Bridging with Native ROS: bridging.md
+  - Examples: examples.md
+  - Contributing: contributing.md
+  - License: license.md
 
 nav:
   - Home: index.md
@@ -36,7 +47,3 @@ markdown_extensions:
 
 extra_css:
   - custom.css
-
-extra_javascript:
-  - https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js
-  - javascripts/mermaid.js
