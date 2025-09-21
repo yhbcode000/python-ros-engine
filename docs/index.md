@@ -2,6 +2,12 @@
 
 A pure Python implementation of ROS2 core functionality with bridging capabilities to interact with native ROS nodes.
 
+[![PyPI version](https://badge.fury.io/py/python-ros-engine.svg)](https://badge.fury.io/py/python-ros-engine)
+[![PyPI version](https://img.shields.io/pypi/v/python-ros-engine.svg)](https://pypi.org/project/python-ros-engine/)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![Python Versions](https://img.shields.io/pypi/pyversions/python-ros-engine.svg)](https://pypi.org/project/python-ros-engine/)
+[![GitHub Pages](https://img.shields.io/badge/docs-GitHub%20Pages-blue)](https://yhbcode000.github.io/python-ros-engine/)
+
 ## Features
 
 - Node creation and lifecycle management
