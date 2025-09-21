@@ -3,16 +3,7 @@ site_description: A pure Python implementation of ROS2 functionality with bridgi
 site_author: Python ROS Engine Team
 
 theme:
-  name: material
-  features:
-    - navigation.tabs
-    - navigation.sections
-    - toc.integrate
-    - search.suggest
-    - search.highlight
-    - content.tabs.link
-    - content.code.annotation
-    - content.code.copy
+  name: readthedocs
 
 nav:
   - Home: index.md
