@@ -6,6 +6,33 @@ A pure Python implementation of ROS2 core functionality with bridging capabiliti
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Python Versions](https://img.shields.io/pypi/pyversions/python-ros-engine.svg)](https://pypi.org/project/python-ros-engine/)
 
+## Project Structure
+
+```mermaid
+graph TD
+    A[Python ROS Engine] --> B[Core Functionality]
+    A --> C[Bridging Capabilities]
+    B --> B1[Node Management]
+    B --> B2[Publishers/Subscribers]
+    B --> B3[Services/Clients]
+    B --> B4[Parameters]
+    B --> B5[Timers]
+    C --> C1[ROS1 Bridge]
+    C --> C2[Message Translation]
+```
+
+## Features
+
+- Node creation and lifecycle management
+- Publisher and subscriber patterns with Quality of Service (QoS) profiles
+- Service and client communication
+- Parameter handling with callbacks
+- Topic and service discovery
+- Timer functionality
+- ROS1 bridging capabilities for node/topic/service discovery
+- Message translation between Python ROS engine and native ROS
+- Configuration with Hydra best practices
+
 ## Features
 
 - Node creation and lifecycle management
@@ -274,6 +301,16 @@ try:
     print(f"Discovered {len(native_nodes)} ROS nodes")
 except Exception as e:
     print(f"Bridge connection failed: {e}")
+```
+
+Architecture diagram:
+
+```mermaid
+graph LR
+    A[Python ROS Engine] -- Message Translation --> B((ROS Bridge))
+    B -- XMLRPC/Socket --> C[ROS Master]
+    B -- TCP/UDP --> D[Native ROS Nodes]
+    A -- TCP/UDP --> E[Native ROS Nodes]
 ```
 
 Note: Bridging requires a running ROS master (ROS1) on localhost:11311 by default.

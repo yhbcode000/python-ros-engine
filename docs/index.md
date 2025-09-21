@@ -14,6 +14,21 @@ A pure Python implementation of ROS2 core functionality with bridging capabiliti
 - Message translation between Python ROS engine and native ROS
 - Configuration with Hydra best practices
 
+## Project Structure
+
+```mermaid
+graph TD
+    A[Python ROS Engine] --> B[Core Functionality]
+    A --> C[Bridging Capabilities]
+    B --> B1[Node Management]
+    B --> B2[Publishers/Subscribers]
+    B --> B3[Services/Clients]
+    B --> B4[Parameters]
+    B --> B5[Timers]
+    C --> C1[ROS1 Bridge]
+    C --> C2[Message Translation]
+```
+
 ## Message Types
 
 The Python ROS Engine supports a wide range of message types:
