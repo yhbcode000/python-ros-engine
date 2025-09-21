@@ -1,11 +1,9 @@
-name: Deploy Documentation
+name: Deploy Documentation to GitHub Pages
 
 on:
   push:
     branches:
       - main
-  release:
-    types: [published]
   workflow_dispatch:
 
 permissions:
@@ -19,6 +17,9 @@ concurrency:
 
 jobs:
   deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -32,13 +33,17 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install mkdocs mkdocs-material
+          pip install mkdocs
+          # Install any additional dependencies required for your documentation
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+      - name: Build documentation
+        run: |
+          mkdocs build
+          echo "site built successfully"
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
-
-      - name: Build site
-        run: mkdocs build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
