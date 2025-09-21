@@ -40,6 +40,19 @@ graph LR
     B -- Messages --> D[Subscribers]
 </pre>
 
+Here's a sequence diagram showing the message flow between publishers and subscribers:
+
+<pre class="mermaid">
+sequenceDiagram
+    participant Publisher
+    participant Topic
+    participant Subscriber1
+    participant Subscriber2
+    Publisher->>Topic: Publish Message
+    Topic->>Subscriber1: Deliver Message
+    Topic->>Subscriber2: Deliver Message
+</pre>
+
 ## Basic Usage
 
 ### Creating a Node
@@ -160,6 +173,18 @@ node = MyNode()
 result = node.send_request(3, 4)
 print(f"Result: {result.sum}")
 ```
+
+Here's a sequence diagram showing the service/client request-response pattern:
+
+<pre class="mermaid">
+sequenceDiagram
+    participant Client
+    participant Service
+    Client->>Service: Request (a=3, b=4)
+    Service->>Client: Response (sum=7)
+</pre>
+
+Here's a sequence diagram showing the service/client request-response pattern:
 
 ## Advanced Usage
 

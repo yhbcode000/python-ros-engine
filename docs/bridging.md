@@ -14,6 +14,19 @@ graph LR
     A -- TCP/UDP --> E[Native ROS Nodes]
 </pre>
 
+Here's a sequence diagram showing the discovery process:
+
+<pre class="mermaid">
+sequenceDiagram
+    participant PyROSNode
+    participant Bridge
+    participant ROSMaster
+    PyROSNode->>Bridge: connect()
+    Bridge->>ROSMaster: XMLRPC discovery request
+    ROSMaster->>Bridge: discovery response
+    Bridge->>PyROSNode: return discovery data
+</pre>
+
 ## ROS Communication Patterns
 
 When bridging with native ROS, various communication patterns are supported:

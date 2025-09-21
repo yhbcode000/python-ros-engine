@@ -13,6 +13,7 @@ nav:
   - API Documentation: api.md
   - Bridging with Native ROS: bridging.md
   - Examples: examples.md
+  - Diagrams Guide: diagrams.md
   - Contributing: contributing.md
   - License: license.md
 

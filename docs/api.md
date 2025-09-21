@@ -16,6 +16,39 @@ graph LR
     G -- handle --> D
 </pre>
 
+Here's a sequence diagram showing the complete message flow from publisher to subscriber:
+
+<pre class="mermaid">
+sequenceDiagram
+    participant Node1
+    participant Publisher
+    participant Topic
+    participant Subscriber
+    participant Node2
+    Node1->>Publisher: create_publisher()
+    Node2->>Subscriber: create_subscription()
+    Publisher->>Topic: publish(message)
+    Topic->>Subscriber: deliver(message)
+    Subscriber->>Node2: callback(message)
+</pre>
+
+And here's a sequence diagram for the service/client request-response flow:
+
+<pre class="mermaid">
+sequenceDiagram
+    participant ClientNode
+    participant Client
+    participant Service
+    participant ServiceNode
+    ClientNode->>Client: create_client()
+    ServiceNode->>Service: create_service()
+    Client->>Service: call(request)
+    Service->>ServiceNode: callback(request)
+    ServiceNode->>Service: return(response)
+    Service->>Client: return(response)
+    Client->>ClientNode: return(response)
+</pre>
+
 ## Node Class
 
 The `Node` class is the base class for all ROS nodes.

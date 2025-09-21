@@ -19,6 +19,30 @@ graph TD
     D --> H
 </pre>
 
+Here's a sequence diagram showing the interaction between the publisher and subscriber nodes in the examples:
+
+<pre class="mermaid">
+sequenceDiagram
+    participant PublisherNode
+    participant Topic
+    participant SubscriberNode
+    PublisherNode->>Topic: Publish message
+    Topic->>SubscriberNode: Deliver message
+    SubscriberNode->>SubscriberNode: Process message in callback
+</pre>
+
+And here's a sequence diagram showing the service/client interaction:
+
+<pre class="mermaid">
+sequenceDiagram
+    participant ClientNode
+    participant ServiceNode
+    ClientNode->>ServiceNode: Service request
+    ServiceNode->>ServiceNode: Process request in callback
+    ServiceNode->>ClientNode: Return response
+    ClientNode->>ClientNode: Handle response
+</pre>
+
 ## Publisher Example
 
 This example demonstrates how to create a node with a publisher that sends messages to a topic.

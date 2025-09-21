@@ -10,6 +10,21 @@ Node Lifecycle:
 - Lifecycle nodes provide more control over node behavior
 - States can be activated/deactivated programmatically
 
+Here's a sequence diagram showing the typical node lifecycle:
+
+<pre class="mermaid">
+sequenceDiagram
+    participant User
+    participant Node
+    User->>Node: Create Node
+    Node->>Node: Configure
+    Node->>Node: Activate
+    User->>Node: Spin (Process callbacks)
+    User->>Node: Shutdown
+    Node->>Node: Cleanup
+    Node->>Node: Destroy
+</pre>
+
 ### Python Implementation (rclpy)
 In rclpy, nodes are created by inheriting from `rclpy.Node` class or by instantiating it directly:
 
@@ -186,6 +201,24 @@ class ParameterNode(Node):
         return SetParametersResult(successful=True)
 ```
 
+Here's a sequence diagram showing the parameter handling flow:
+
+<pre class="mermaid">
+sequenceDiagram
+    participant User
+    participant ParameterNode
+    participant ParameterServer
+    User->>ParameterNode: declare_parameter(name, default)
+    ParameterNode->>ParameterServer: Register parameter
+    User->>ParameterNode: get_parameter(name)
+    ParameterNode->>ParameterServer: Request parameter value
+    ParameterServer->>ParameterNode: Return parameter value
+    User->>ParameterNode: set_parameter(name, value)
+    ParameterNode->>ParameterServer: Update parameter value
+    ParameterServer->>ParameterNode: Notify parameter change
+    ParameterNode->>ParameterNode: Call parameter_callback()
+</pre>
+
 ## 5. Topic Discovery and Management
 
 ### Core Concepts
@@ -228,6 +261,19 @@ QoS profiles define communication policies:
   - **Transient Local**: Replays last message for late subscribers
   - **Volatile**: No message replay
 - Critical for handling lossy networks and real-time requirements
+
+Here's a sequence diagram showing how QoS policies affect message delivery:
+
+<pre class="mermaid">
+sequenceDiagram
+    participant Publisher
+    participant Topic
+    participant Subscriber
+    Publisher->>Topic: Publish message (Reliable QoS)
+    Topic->>Subscriber: Attempt delivery
+    Subscriber->>Topic: Acknowledge receipt
+    Topic->>Publisher: Confirm delivery
+</pre>
 
 ### Python Implementation (rclpy)
 ```python
