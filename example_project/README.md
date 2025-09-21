@@ -1,8 +1,8 @@
-# Python ROS Engine Example Project
+# 🤖 Python ROS Engine Example Project
 
 This is a complete example project demonstrating the usage of the Python ROS Engine package.
 
-## Project Structure
+## 📁 Project Structure
 
 ```
 example_project/
@@ -22,7 +22,7 @@ example_project/
 └── README.md
 ```
 
-## Installation
+## ⚙️ Installation
 
 First, install the Python ROS Engine package:
 
@@ -30,7 +30,7 @@ First, install the Python ROS Engine package:
 pip install python-ros-engine
 ```
 
-## Running the Example
+## ▶️ Running the Example
 
 1. Start the publisher node:
    ```bash
@@ -57,6 +57,6 @@ pip install python-ros-engine
    python launch/robot_system.py
    ```
 
-## Configuration
+## 🛠️ Configuration
 
 The example uses Hydra for configuration management. You can modify the configuration files in the `config/` directory to change the behavior of the nodes.

@@ -1,6 +1,6 @@
-# ROS2 Core Concepts and Python Implementation
+# 📖 ROS2 Core Concepts and Python Implementation
 
-## 1. Node Creation and Lifecycle
+## 1. ⚙️ Node Creation and Lifecycle
 
 ### Core Concepts
 Nodes are the fundamental building blocks of ROS2 applications. Each node represents a single process that performs computation and can communicate with other nodes. Nodes are combined together in a graph to build complex robotic systems.
@@ -25,7 +25,7 @@ sequenceDiagram
     Node->>Node: Destroy
 </pre>
 
-### Python Implementation (rclpy)
+### 🐍 Python Implementation (rclpy)
 In rclpy, nodes are created by inheriting from `rclpy.Node` class or by instantiating it directly:
 
 ```python
@@ -82,16 +82,16 @@ class MyLifecycleNode(LifecycleNode):
         return TransitionCallbackReturn.SUCCESS
 ```
 
-## 2. Publisher and Subscriber Patterns
+## 2. 🔄 Publisher and Subscriber Patterns
 
 ### Core Concepts
 ROS2 uses a publish/subscribe model for asynchronous communication:
-- **Publishers** send messages to specific topics
-- **Subscribers** listen to topics and receive messages
+- **📢 Publishers** send messages to specific topics
+- **📡 Subscribers** listen to topics and receive messages
 - Communication is many-to-many (multiple publishers/subscribers per topic)
 - This pattern enables loose coupling between nodes
 
-### Python Implementation (rclpy)
+### 🐍 Python Implementation (rclpy)
 ```python
 # Publisher
 from rclpy.node import Node
@@ -124,7 +124,7 @@ class SubscriberNode(Node):
         self.get_logger().info(f'Received: {msg.data}')
 ```
 
-## 3. Service and Client Patterns
+## 3. 🤝 Service and Client Patterns
 
 ### Core Concepts
 For synchronous request/response communication:
@@ -133,7 +133,7 @@ For synchronous request/response communication:
 - One service server can handle multiple clients
 - Services are for immediate, reliable operations
 
-### Python Implementation (rclpy)
+### 🐍 Python Implementation (rclpy)
 ```python
 # Service Server
 from rclpy.node import Node
@@ -165,7 +165,7 @@ class ClientNode(Node):
         return future
 ```
 
-## 4. Parameter Handling
+## 4. ⚙️ Parameter Handling
 
 ### Core Concepts
 Parameters allow nodes to store and retrieve configuration values:
@@ -174,7 +174,7 @@ Parameters allow nodes to store and retrieve configuration values:
 - Support various data types (int, float, string, bool, arrays)
 - Can be declared, set, and retrieved within nodes
 
-### Python Implementation (rclpy)
+### 🐍 Python Implementation (rclpy)
 ```python
 class ParameterNode(Node):
     def __init__(self):
@@ -219,7 +219,7 @@ sequenceDiagram
     ParameterNode->>ParameterNode: Call parameter_callback()
 </pre>
 
-## 5. Topic Discovery and Management
+## 5. 🔍 Topic Discovery and Management
 
 ### Core Concepts
 ROS2 automatically discovers nodes and topics:
@@ -228,7 +228,7 @@ ROS2 automatically discovers nodes and topics:
 - Tools like `ros2 topic list` help with introspection
 - Dynamic discovery enables plug-and-play functionality
 
-### Python Implementation (rclpy)
+### 🐍 Python Implementation (rclpy)
 ```python
 class DiscoveryNode(Node):
     def __init__(self):
@@ -250,7 +250,7 @@ class DiscoveryNode(Node):
             self.get_logger().info(f'Subscriber: {info.node_name}')
 ```
 
-## 6. Quality of Service (QoS) Profiles
+## 6. 📡 Quality of Service (QoS) Profiles
 
 ### Core Concepts
 QoS profiles define communication policies:
@@ -275,7 +275,7 @@ sequenceDiagram
     Topic->>Publisher: Confirm delivery
 </pre>
 
-### Python Implementation (rclpy)
+### 🐍 Python Implementation (rclpy)
 ```python
 from rclpy.qos import QoSProfile, ReliabilityPolicy, DurabilityPolicy
 
@@ -293,7 +293,7 @@ publisher = self.create_publisher(String, 'topic_name', qos_profile)
 subscription = self.create_subscription(String, 'topic_name', callback, qos_profile)
 ```
 
-## 7. ROS2 Bridging Capabilities with Native ROS
+## 7. 🌉 ROS2 Bridging Capabilities with Native ROS
 
 ### Main Approaches
 
@@ -319,7 +319,7 @@ subscription = self.create_subscription(String, 'topic_name', callback, qos_prof
 - ROS2 clients can connect via rosbridge_websocket
 - Useful for web-based applications and remote monitoring
 
-### Limitations
+### ⚠️ Limitations
 
 #### Technical Constraints
 - **Performance overhead**: Message translation adds latency

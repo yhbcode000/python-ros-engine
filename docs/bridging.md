@@ -1,8 +1,8 @@
-# Bridging with Native ROS
+# 🌉 Bridging with Native ROS
 
 The Python ROS engine provides capabilities to discover and interact with native ROS nodes.
 
-## Bridge Architecture
+## 🏗️ Bridge Architecture
 
 The bridge enables communication between Python ROS Engine and native ROS systems:
 
@@ -27,7 +27,7 @@ sequenceDiagram
     Bridge->>PyROSNode: return discovery data
 </pre>
 
-## ROS Communication Patterns
+## 🔄 ROS Communication Patterns
 
 When bridging with native ROS, various communication patterns are supported:
 
@@ -41,7 +41,7 @@ graph TD
     D --> D1[Configuration Management]
 </pre>
 
-## Bridge Connection
+## 🔌 Bridge Connection
 
 The bridge connects to the ROS master using XMLRPC protocol:
 
@@ -55,7 +55,7 @@ bridge = Bridge()
 bridge = Bridge("192.168.1.100", 11312)
 ```
 
-## Discovering ROS Nodes
+## 🔍 Discovering ROS Nodes
 
 ```python
 from pyros2 import Bridge
@@ -71,7 +71,7 @@ except BridgeConnectionError as e:
     print(f"Failed to connect: {e}")
 ```
 
-## Discovering ROS Topics
+## 🔍 Discovering ROS Topics
 
 ```python
 from pyros2 import Bridge
@@ -87,7 +87,7 @@ except BridgeConnectionError as e:
     print(f"Failed to connect: {e}")
 ```
 
-## Discovering ROS Services
+## 🔍 Discovering ROS Services
 
 ```python
 from pyros2 import Bridge
@@ -103,15 +103,15 @@ except BridgeConnectionError as e:
     print(f"Failed to connect: {e}")
 ```
 
-## Requirements for Bridging
+## ✅ Requirements for Bridging
 
 To use the bridging capabilities, you need:
 
-1. A running ROS master (ROS1)
-2. Network connectivity to the ROS master
-3. Proper permissions to access the ROS master
+1. 🤖 A running ROS master (ROS1)
+2. 🌐 Network connectivity to the ROS master
+3. 🔐 Proper permissions to access the ROS master
 
-## Setting up ROS Master
+## ⚙️ Setting up ROS Master
 
 If you don't have ROS installed, you can run a simple ROS master using roscore:
 
@@ -121,7 +121,7 @@ roscore
 
 This will start the ROS master on localhost:11311 by default.
 
-## Limitations
+## ⚠️ Limitations
 
 The current bridging implementation:
 

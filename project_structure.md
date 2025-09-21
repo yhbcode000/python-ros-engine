@@ -1,6 +1,6 @@
-# Python ROS Engine Project Structure
+# 📁 Python ROS Engine Project Structure
 
-## Directory Layout
+## 📂 Directory Layout
 ```
 python_ros_engine/
 ├── src/
@@ -60,9 +60,9 @@ python_ros_engine/
 └── mkdocs.yml                # MkDocs configuration
 ```
 
-## Module Descriptions
+## 📦 Module Descriptions
 
-### Core Modules (src/pyros2/)
+### ⚙️ Core Modules (src/pyros2/)
 1. **node.py** - Implements the Node base class with lifecycle management
 2. **publisher.py** - Implements publisher functionality with topic registration
 3. **subscriber.py** - Implements subscriber functionality with callback handling
@@ -75,10 +75,10 @@ python_ros_engine/
 10. **bridge.py** - Implements bridging capabilities to native ROS
 11. **exceptions.py** - Custom exceptions for the ROS engine
 
-### Configuration (config/)
+### 🛠️ Configuration (config/)
 1. **hydra_config.py** - Implements configuration using Hydra best practices
 
-### Testing (tests/)
+### 🧪 Testing (tests/)
 1. **test_node.py** - Tests for node creation and lifecycle
 2. **test_publisher_subscriber.py** - Tests for publisher/subscriber functionality
 3. **test_service_client.py** - Tests for service/client functionality
@@ -87,14 +87,14 @@ python_ros_engine/
 6. **test_qos.py** - Tests for QoS profiles
 7. **test_bridge.py** - Tests for bridging capabilities
 
-### Examples (examples/)
+### 📚 Examples (examples/)
 1. **publisher_example.py** - Example publisher node
 2. **subscriber_example.py** - Example subscriber node
 3. **service_example.py** - Example service server
 4. **client_example.py** - Example service client
 5. **bridge_example.py** - Example showing bridging capabilities
 
-### Documentation (docs/)
+### 📖 Documentation (docs/)
 All documentation is written in Markdown format and uses Mermaid diagrams for visual explanations:
 1. **api.md** - API documentation for all modules
 2. **usage.md** - Usage examples and tutorials
@@ -108,11 +108,11 @@ All documentation is written in Markdown format and uses Mermaid diagrams for vi
 10. **javascripts/** - Custom JavaScript enhancements
 11. **templates/** - Custom HTML templates
 
-### Documentation Tools
+### 🛠️ Documentation Tools
 1. **build_docs.py** - Script to build and serve documentation locally with `mkdocs serve`
 2. **mkdocs.yml** - MkDocs configuration file defining site structure and plugins
 
-### Deployment
+### ☁️ Deployment
 1. **setup.py** - Package setup configuration
 2. **pyproject.toml** - Modern Python package configuration
 3. **requirements.txt** - Dependencies
