@@ -2,6 +2,23 @@
 
 The Python ROS Engine comes with several examples demonstrating its core functionality. These examples can be found in the `examples/` directory of the repository.
 
+## System Architecture
+
+The examples demonstrate various aspects of the Python ROS Engine architecture:
+
+<pre class="mermaid">
+graph TD
+    A[Examples System] --> B[Publisher Node]
+    A --> C[Subscriber Node]
+    A --> D[Service Node]
+    A --> E[Client Node]
+    A --> F[Bridge Node]
+    B --> G[(Topics)]
+    C --> G
+    E --> H[(Services)]
+    D --> H
+</pre>
+
 ## Publisher Example
 
 This example demonstrates how to create a node with a publisher that sends messages to a topic.

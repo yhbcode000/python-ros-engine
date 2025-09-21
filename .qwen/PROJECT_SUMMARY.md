@@ -1,35 +1,31 @@
 # Project Summary
 
 ## Overall Goal
-To implement a Python ROS engine that can handle various message types and translate between Python ROS and native ROS messages.
+Create a Python ROS2 engine implementation with comprehensive documentation and GitHub Pages deployment.
 
 ## Key Knowledge
-- The project is built using Python with dataclasses for message definitions
-- Uses pytest for testing with 89 total tests across multiple test files
-- Message types include primitives (Int8, Int16, Int32, Int64, UInt8, UInt16, UInt32, UInt64, Float32, Float64, Bool, Empty), time-related types (Time, Duration), and multi-dimensional array types (ByteMultiArray, Int8MultiArray, etc.)
-- The message translator functionality converts between Python ROS engine messages and native ROS messages
-- Fixed serialization/deserialization issues for nested objects in multi-array messages by updating the Message class and all multi-array message classes to properly handle reconstruction of nested dataclass objects from dictionaries
-- All tests are currently passing, indicating a stable implementation
+- Using MkDocs with Read the Docs theme for documentation
+- Documentation source files are in `docs/` directory
+- Documentation is automatically deployed via GitHub Actions to https://yhbcode000.github.io/python-ros-engine/
+- Mermaid.js is used for creating diagrams in documentation (version 10.9.4)
+- Custom CSS file at `docs/custom.css` improves wide screen layout with max-width: 1200px
+- Project uses pre-commit hooks that may cause issues with commits
 
 ## Recent Actions
-- Successfully implemented all message types with proper serialization/deserialization support
-- Fixed critical serialization issues for nested objects in multi-dimensional array messages
-- Verified message translator functionality for converting between Python ROS and native ROS messages
-- Completed comprehensive testing including publisher/subscriber and service/client communication
-- Ran all tests to confirm 89/89 tests are passing
+- Configured MkDocs to use Read the Docs theme instead of Material theme
+- Added custom CSS to improve wide screen layout support
+- Integrated Mermaid.js support for creating diagrams in documentation
+- Added project structure diagrams to both README.md and docs/index.md
+- Fixed Mermaid syntax errors by updating from `graph` to `flowchart` keywords
+- Implemented custom HTML template approach to improve Mermaid compatibility with Read the Docs theme
 
 ## Current Plan
-1. [DONE] Implement all primitive message types
-2. [DONE] Implement time-related message types
-3. [DONE] Implement multi-dimensional array message types
-4. [DONE] Fix serialization/deserialization for nested objects
-5. [DONE] Implement message translator functionality
-6. [DONE] Verify publisher/subscriber communication
-7. [DONE] Verify service/client communication
-8. [DONE] Run comprehensive integration tests
-9. [DONE] Confirm all 89 tests are passing
+1. [IN PROGRESS] Fix remaining Mermaid rendering issues with Read the Docs theme
+2. [TODO] Test local documentation server with corrected Mermaid integration
+3. [TODO] Verify online documentation deployment through GitHub Actions
+4. [TODO] Continue adding more comprehensive documentation content and examples
 
 ---
 
 ## Summary Metadata
-**Update time**: 2025-09-21T13:16:54.900Z 
+**Update time**: 2025-09-21T18:20:15.874Z 

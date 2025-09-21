@@ -5,6 +5,23 @@
 - Python 3.8 or higher
 - pip (Python package installer)
 
+## System Architecture
+
+Before installing, it's helpful to understand the overall architecture of the Python ROS Engine:
+
+<pre class="mermaid">
+graph TD
+    A[Python ROS Engine] --> B[Core Functionality]
+    A --> C[Bridging Capabilities]
+    B --> B1[Node Management]
+    B --> B2[Publishers/Subscribers]
+    B --> B3[Services/Clients]
+    B --> B4[Parameters]
+    B --> B5[Timers]
+    C --> C1[ROS1 Bridge]
+    C --> C2[Message Translation]
+</pre>
+
 ## Installation Methods
 
 ### From PyPI (Recommended)

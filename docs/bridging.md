@@ -2,6 +2,32 @@
 
 The Python ROS engine provides capabilities to discover and interact with native ROS nodes.
 
+## Bridge Architecture
+
+The bridge enables communication between Python ROS Engine and native ROS systems:
+
+<pre class="mermaid">
+graph LR
+    A[Python ROS Engine] -- Message Translation --> B[(ROS Bridge)]
+    B -- XMLRPC/Socket --> C[ROS Master]
+    B -- TCP/UDP --> D[Native ROS Nodes]
+    A -- TCP/UDP --> E[Native ROS Nodes]
+</pre>
+
+## ROS Communication Patterns
+
+When bridging with native ROS, various communication patterns are supported:
+
+<pre class="mermaid">
+graph TD
+    A[Communication Patterns] --> B[Topics - Publisher/Subscriber]
+    A --> C[Services - Request/Response]
+    A --> D[Parameters - Key/Value Storage]
+    B --> B1[Asynchronous Messaging]
+    C --> C1[Synchronous Communication]
+    D --> D1[Configuration Management]
+</pre>
+
 ## Bridge Connection
 
 The bridge connects to the ROS master using XMLRPC protocol:

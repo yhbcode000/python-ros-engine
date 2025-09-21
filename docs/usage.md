@@ -14,6 +14,32 @@ Or install in development mode:
 pip install -e .
 ```
 
+## Node Lifecycle
+
+The Python ROS Engine follows a node lifecycle similar to ROS2:
+
+<pre class="mermaid">
+graph TD
+    A[Node Creation] --> B[Configuration]
+    B --> C[Activation]
+    C --> D[Running]
+    D --> E{Shutdown?}
+    E -->|Yes| F[Cleanup]
+    E -->|No| D
+    F --> G[Node Destruction]
+</pre>
+
+## Publisher/Subscriber Communication
+
+The publisher/subscriber pattern enables asynchronous one-to-many communication between nodes:
+
+<pre class="mermaid">
+graph LR
+    A[Publishers] -- Messages --> B[(Topic)]
+    B -- Messages --> C[Subscribers]
+    B -- Messages --> D[Subscribers]
+</pre>
+
 ## Basic Usage
 
 ### Creating a Node
@@ -141,6 +167,18 @@ print(f"Result: {result.sum}")
 
 The Python ROS Engine supports QoS profiles for publishers and subscribers:
 
+<pre class="mermaid">
+graph TD
+    A[QoS Profiles] --> B[Reliability]
+    A --> C[Durability]
+    A --> D[Depth]
+    B --> B1[Reliable - Guaranteed delivery]
+    B --> B2[Best Effort - No delivery guarantees]
+    C --> C1[Transient Local - Replays last message]
+    C --> C2[Volatile - No message replay]
+    D --> D1[Queue Depth - Message history size]
+</pre>
+
 ```python
 from pyros2 import Node, QoSProfile
 from pyros2.message import String
@@ -166,6 +204,15 @@ class MyNode(Node):
 ### Parameter Handling
 
 Nodes can handle parameters with callbacks:
+
+<pre class="mermaid">
+graph TD
+    A[Parameter Declaration] --> B[Parameter Storage]
+    B --> C[Parameter Access]
+    C --> D[Parameter Modification]
+    D --> E[Callback Trigger]
+    E --> F[Execute Callback Function]
+</pre>
 
 ```python
 from pyros2 import Node

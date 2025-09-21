@@ -1,5 +1,21 @@
 # API Documentation
 
+## Message Flow
+
+The Python ROS Engine follows a message flow pattern similar to ROS2:
+
+<pre class="mermaid">
+graph LR
+    A[Node] -- create_publisher --> B[Publisher]
+    A -- create_subscription --> C[Subscriber]
+    A -- create_service --> D[Service]
+    A -- create_client --> E[Client]
+    B -- publish --> F[(Topic)]
+    F -- subscribe --> C
+    E -- call --> G[(Service)]
+    G -- handle --> D
+</pre>
+
 ## Node Class
 
 The `Node` class is the base class for all ROS nodes.
