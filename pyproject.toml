@@ -46,8 +46,8 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/your-username/python-ros-engine"
-Repository = "https://github.com/your-username/python-ros-engine"
+Homepage = "https://github.com/yhbcode000/python-ros-engine"
+Repository = "https://github.com/yhbcode000/python-ros-engine"
 
 
 [tool.pytest.ini_options]

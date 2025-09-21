@@ -12,7 +12,7 @@ setup(
     "bridging capabilities",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/your-username/python-ros-engine",
+    url="https://github.com/yhbcode000/python-ros-engine",
     packages=find_packages(where="src"),
     package_dir={"": "src"},
     classifiers=[

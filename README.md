@@ -47,7 +47,7 @@ pip install python-ros-engine
 
 ### From Source
 ```bash
-git clone https://github.com/your-username/python-ros-engine.git
+git clone https://github.com/yhbcode000/python-ros-engine.git
 cd python-ros-engine
 pip install -e .
 ```
@@ -250,7 +250,7 @@ This will start a local development server at http://127.0.0.1:8000 that automat
 
 ### Online Documentation
 
-For the online documentation, visit [https://your-username.github.io/python-ros-engine/](https://your-username.github.io/python-ros-engine/) (replace `your-username` with the actual GitHub username).
+For the online documentation, visit [https://yhbcode000.github.io/python-ros-engine/](https://yhbcode000.github.io/python-ros-engine/)
 
 ### GitHub Actions Documentation Deployment
 
