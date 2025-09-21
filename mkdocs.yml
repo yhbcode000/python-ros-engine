@@ -30,6 +30,8 @@ markdown_extensions:
   - pymdownx.emoji:
       emoji_index: !!python/name:pymdownx.emoji.twemoji
       emoji_generator: !!python/name:pymdownx.emoji.to_svg
+      options:
+        image_path: https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/
   - admonition
   - toc:
       permalink: true
