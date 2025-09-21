@@ -4,11 +4,6 @@ site_author: Python ROS Engine Team
 
 theme:
   name: readthedocs
-  navigation_depth: 6
-  collapse_navigation: false
-  sticky_navigation: true
-  prev_next_buttons_location: both
-  highlightjs: true
 
 nav:
   - Home: index.md
@@ -36,4 +31,4 @@ markdown_extensions:
   - meta
 
 extra_css:
-  - css/custom.css
+  - custom.css
