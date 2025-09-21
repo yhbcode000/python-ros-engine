@@ -6,7 +6,7 @@ Script to build and serve the documentation site.
 
 import subprocess
 import sys
-import os
+
 
 def build_docs():
     """Build the documentation site."""
@@ -18,6 +18,7 @@ def build_docs():
         print(f"Error building documentation: {e}")
         sys.exit(1)
 
+
 def serve_docs():
     """Serve the documentation site locally."""
     print("Starting local documentation server...")
@@ -27,13 +28,14 @@ def serve_docs():
         print(f"Error serving documentation: {e}")
         sys.exit(1)
 
+
 if __name__ == "__main__":
     if len(sys.argv) < 2:
         print("Usage: python build_docs.py [build|serve]")
         sys.exit(1)
-    
+
     command = sys.argv[1]
-    
+
     if command == "build":
         build_docs()
     elif command == "serve":

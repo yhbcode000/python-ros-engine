@@ -1,4 +1,4 @@
-from setuptools import setup, find_packages
+from setuptools import find_packages, setup
 
 with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
@@ -11,7 +11,8 @@ setup(
     version="0.1.0",
     author="Python ROS Engine Team",
     author_email="pyros@example.com",
-    description="A pure Python implementation of ROS2 functionality with bridging capabilities",
+    description="A pure Python implementation of ROS2 functionality with "
+    "bridging capabilities",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/your-username/python-ros-engine",
@@ -45,6 +46,6 @@ setup(
             "pytest-asyncio>=0.14.0",
             "mkdocs>=1.4.0",
             "mkdocs-material>=9.0.0",
-        ]
+        ],
     },
 )
